@@ -12,3 +12,9 @@ impl Bus {
 }
 
 struct Device(u8);
+impl Device {
+    fn new(device: u8) -> Self {
+        assert!(device < 16);
+        Self(device)
+    }
+}
