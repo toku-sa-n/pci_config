@@ -21,3 +21,9 @@ impl Device {
 }
 
 struct Function(u8);
+impl Function {
+    fn new(function: u8) -> Self {
+        assert!(function < 8);
+        Self(function)
+    }
+}
