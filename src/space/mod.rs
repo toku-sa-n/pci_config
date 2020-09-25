@@ -4,4 +4,4 @@
 
 pub(crate) mod accessor;
 mod common;
-mod raw;
+mod registers;
