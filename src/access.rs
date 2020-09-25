@@ -26,6 +26,10 @@ impl Bus {
     pub(crate) fn new(bus: u8) -> Self {
         Self(bus)
     }
+
+    fn as_u8(self) -> u8 {
+        self.0
+    }
 }
 
 #[derive(Copy, Clone)]
