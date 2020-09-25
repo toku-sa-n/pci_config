@@ -39,3 +39,8 @@ impl CacheLineSize {
 
 #[derive(Copy, Clone)]
 struct LatencyTimer(u8);
+impl LatencyTimer {
+    fn new(timer: u8) -> Self {
+        Self(timer)
+    }
+}
