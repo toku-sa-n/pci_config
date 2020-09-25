@@ -6,3 +6,8 @@
 #![deny(clippy::all)]
 
 mod access;
+
+struct IterDevices {
+    bus: u8,
+    device: u8,
+}
