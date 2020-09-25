@@ -2,6 +2,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+use x86_64::instructions::port::{PortReadOnly, PortWriteOnly};
+
 pub(crate) struct Access {
     bus: Bus,
     device: Device,
@@ -17,6 +19,16 @@ impl Access {
             function,
             index,
         }
+    }
+    fn read(&self) -> u32 {
+        const PORT_CONFIG_ADDR: PortWriteOnly<u32> = PortWriteOnly::new(0xcf8);
+        const PORT_CONFIG_DATA: PortReadOnly<u32> = PortReadOnly::new(0xcfc);
+
+        let mut addr = PORT_CONFIG_ADDR;
+        unsafe { addr.write(self.address()) }
+
+        let mut data = PORT_CONFIG_DATA;
+        unsafe { data.read() }
     }
 
     fn address(&self) -> u32 {
