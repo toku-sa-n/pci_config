@@ -65,4 +65,8 @@ impl RegisterIndex {
         assert!(index < 64);
         Self(index)
     }
+
+    fn as_u8(self) -> u8 {
+        self.0
+    }
 }
