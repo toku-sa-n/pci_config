@@ -18,6 +18,17 @@ impl Access {
             index,
         }
     }
+
+    fn address(&self) -> u32 {
+        let bus = self.bus.as_u8() as u32;
+        let device = self.device.as_u8() as u32;
+        let function = self.device.as_u8() as u32;
+        let index = self.index.as_u8() as u32;
+
+        const VALID: u32 = 0x8000_0000;
+
+        VALID | bus << 16 | device << 11 | function << 8 | index << 2
+    }
 }
 
 #[derive(Copy, Clone)]
