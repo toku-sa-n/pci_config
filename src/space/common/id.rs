@@ -12,3 +12,8 @@ impl Device {
 
 #[derive(Copy, Clone)]
 struct Vendor(u16);
+impl Vendor {
+    fn new(vendor: u16) -> Self {
+        Self(vendor)
+    }
+}
