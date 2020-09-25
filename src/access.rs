@@ -52,6 +52,10 @@ impl Function {
         assert!(function < 8);
         Self(function)
     }
+
+    fn as_u8(self) -> u8 {
+        self.0
+    }
 }
 
 #[derive(Copy, Clone)]
