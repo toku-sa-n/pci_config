@@ -7,6 +7,12 @@ struct Id {
     vendor: Vendor,
 }
 
+impl Id {
+    fn new(device: Device, vendor: Vendor) -> Self {
+        Self { device, vendor }
+    }
+}
+
 #[derive(Copy, Clone)]
 struct Device(u16);
 impl Device {
