@@ -2,7 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-use x86_64::instructions::port::{PortReadOnly, PortWriteOnly};
+use {
+    super::raw::NUM_REGISTERS,
+    x86_64::instructions::port::{PortReadOnly, PortWriteOnly},
+};
 
 pub(crate) struct Access {
     bus: Bus,
@@ -85,7 +88,7 @@ impl Function {
 pub(crate) struct RegisterIndex(u8);
 impl RegisterIndex {
     pub(crate) fn new(index: u8) -> Self {
-        assert!(index < 64);
+        assert!(index < NUM_REGISTERS as u8);
         Self(index)
     }
 
