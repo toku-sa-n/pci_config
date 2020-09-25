@@ -5,10 +5,9 @@
 #![no_std]
 #![deny(clippy::all)]
 
-mod access;
 mod space;
 
-use access::{Bus, Device};
+use space::access::{Bus, Device};
 
 struct IterDevices {
     bus: Bus,
