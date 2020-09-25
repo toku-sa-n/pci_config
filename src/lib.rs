@@ -7,7 +7,9 @@
 
 mod access;
 
+use access::{Bus, Device};
+
 struct IterDevices {
-    bus: u8,
-    device: u8,
+    bus: Bus,
+    device: Device,
 }
