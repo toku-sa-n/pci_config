@@ -4,6 +4,7 @@
 
 mod id;
 
+#[derive(Copy, Clone)]
 struct Command(u16);
 impl Command {
     fn new(command: u16) -> Self {
@@ -11,4 +12,5 @@ impl Command {
     }
 }
 
+#[derive(Copy, Clone)]
 struct Status(u16);
