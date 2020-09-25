@@ -21,7 +21,7 @@ impl Access {
 }
 
 #[derive(Copy, Clone)]
-struct Bus(u8);
+pub(crate) struct Bus(u8);
 impl Bus {
     fn new(bus: u8) -> Self {
         Self(bus)
@@ -29,7 +29,7 @@ impl Bus {
 }
 
 #[derive(Copy, Clone)]
-struct Device(u8);
+pub(crate) struct Device(u8);
 impl Device {
     fn new(device: u8) -> Self {
         assert!(device < 16);
