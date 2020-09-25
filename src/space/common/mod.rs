@@ -31,3 +31,8 @@ impl Interface {
 
 #[derive(Copy, Clone)]
 struct CacheLineSize(u8);
+impl CacheLineSize {
+    fn new(size: u8) -> Self {
+        Self(size)
+    }
+}
