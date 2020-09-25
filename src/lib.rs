@@ -3,3 +3,8 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 struct Bus(u8);
+impl Bus {
+    fn new(bus: u8) -> Self {
+        Self(bus)
+    }
+}
