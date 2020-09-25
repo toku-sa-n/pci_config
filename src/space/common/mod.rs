@@ -10,3 +10,5 @@ impl Command {
         Self(command)
     }
 }
+
+struct Status(u16);
