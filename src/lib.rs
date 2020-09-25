@@ -12,6 +12,7 @@ struct Access {
     index: RegisterIndex,
 }
 
+#[derive(Copy, Clone)]
 struct Bus(u8);
 impl Bus {
     fn new(bus: u8) -> Self {
@@ -19,6 +20,7 @@ impl Bus {
     }
 }
 
+#[derive(Copy, Clone)]
 struct Device(u8);
 impl Device {
     fn new(device: u8) -> Self {
@@ -27,6 +29,7 @@ impl Device {
     }
 }
 
+#[derive(Copy, Clone)]
 struct Function(u8);
 impl Function {
     fn new(function: u8) -> Self {
@@ -35,6 +38,7 @@ impl Function {
     }
 }
 
+#[derive(Copy, Clone)]
 struct RegisterIndex(u8);
 impl RegisterIndex {
     fn new(index: u8) -> Self {
