@@ -55,3 +55,8 @@ impl HeaderType {
 
 #[derive(Copy, Clone)]
 struct Bist(u8);
+impl Bist {
+    fn new(bist: u8) -> Self {
+        Self(bist)
+    }
+}
