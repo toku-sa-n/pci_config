@@ -8,3 +8,4 @@ edition = "2018"
 name = "pci_config"
 
 [dependencies]
+x86_64 = "0.12.1"
