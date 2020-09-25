@@ -3,6 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #![no_std]
+#![deny(clippy::all)]
 
 struct Bus(u8);
 impl Bus {
