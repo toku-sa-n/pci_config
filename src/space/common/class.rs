@@ -10,3 +10,8 @@ impl Code {
 }
 
 struct Sub(u8);
+impl Sub {
+    fn new(sub: u8) -> Self {
+        Self(sub)
+    }
+}
