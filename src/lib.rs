@@ -5,6 +5,13 @@
 #![no_std]
 #![deny(clippy::all)]
 
+struct Access {
+    bus: Bus,
+    device: Device,
+    function: Function,
+    index: RegisterIndex,
+}
+
 struct Bus(u8);
 impl Bus {
     fn new(bus: u8) -> Self {
