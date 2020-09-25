@@ -12,18 +12,5 @@ impl Class {
     }
 }
 
-#[derive(Copy, Clone)]
-struct Code(u8);
-impl Code {
-    fn new(code: u8) -> Self {
-        Self(code)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Sub(u8);
-impl Sub {
-    fn new(sub: u8) -> Self {
-        Self(sub)
-    }
-}
+define_field!(Code, u8);
+define_field!(Sub, u8);

@@ -5,58 +5,10 @@
 mod class;
 mod id;
 
-#[derive(Copy, Clone)]
-struct Command(u16);
-impl Command {
-    fn new(command: u16) -> Self {
-        Self(command)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Status(u16);
-impl Status {
-    fn new(status: u16) -> Self {
-        Self(status)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Interface(u8);
-impl Interface {
-    fn new(interface: u8) -> Self {
-        Self(interface)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct CacheLineSize(u8);
-impl CacheLineSize {
-    fn new(size: u8) -> Self {
-        Self(size)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct LatencyTimer(u8);
-impl LatencyTimer {
-    fn new(timer: u8) -> Self {
-        Self(timer)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct HeaderType(u8);
-impl HeaderType {
-    fn new(ty: u8) -> Self {
-        Self(ty)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Bist(u8);
-impl Bist {
-    fn new(bist: u8) -> Self {
-        Self(bist)
-    }
-}
+define_field!(Command, u16);
+define_field!(Status, u16);
+define_field!(Interface, u8);
+define_field!(CacheLineSize, u8);
+define_field!(LatencyTimer, u8);
+define_field!(HeaderType, u8);
+define_field!(Bist, u8);

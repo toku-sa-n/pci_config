@@ -18,26 +18,6 @@ impl Id {
     }
 }
 
-#[derive(Copy, Clone)]
-struct Device(u16);
-impl Device {
-    fn new(device: u16) -> Self {
-        Self(device)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Vendor(u16);
-impl Vendor {
-    fn new(vendor: u16) -> Self {
-        Self(vendor)
-    }
-}
-
-#[derive(Copy, Clone)]
-struct Revision(u8);
-impl Revision {
-    fn new(revision: u8) -> Self {
-        Self(revision)
-    }
-}
+define_field!(Device, u16);
+define_field!(Vendor, u16);
+define_field!(Revision, u8);
