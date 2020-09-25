@@ -36,3 +36,6 @@ impl CacheLineSize {
         Self(size)
     }
 }
+
+#[derive(Copy, Clone)]
+struct LatencyTimer(u8);
