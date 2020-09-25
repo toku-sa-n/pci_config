@@ -22,3 +22,8 @@ impl Status {
 
 #[derive(Copy, Clone)]
 struct Interface(u16);
+impl Interface {
+    fn new(interface: u16) -> Self {
+        Self(interface)
+    }
+}
