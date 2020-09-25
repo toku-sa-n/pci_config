@@ -7,14 +7,14 @@ use {
     x86_64::instructions::port::{PortReadOnly, PortWriteOnly},
 };
 
-pub(crate) struct Access {
+pub(crate) struct Accessor {
     bus: Bus,
     device: Device,
     function: Function,
     index: RegisterIndex,
 }
 
-impl Access {
+impl Accessor {
     pub(crate) fn new(bus: Bus, device: Device, function: Function, index: RegisterIndex) -> Self {
         Self {
             bus,
