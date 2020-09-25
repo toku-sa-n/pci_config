@@ -22,9 +22,9 @@ impl Status {
 }
 
 #[derive(Copy, Clone)]
-struct Interface(u16);
+struct Interface(u8);
 impl Interface {
-    fn new(interface: u16) -> Self {
+    fn new(interface: u8) -> Self {
         Self(interface)
     }
 }
