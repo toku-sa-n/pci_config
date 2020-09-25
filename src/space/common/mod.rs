@@ -28,3 +28,6 @@ impl Interface {
         Self(interface)
     }
 }
+
+#[derive(Copy, Clone)]
+struct CacheLineSize(u8);
