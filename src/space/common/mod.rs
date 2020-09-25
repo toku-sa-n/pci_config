@@ -5,3 +5,8 @@
 mod id;
 
 struct Command(u16);
+impl Command {
+    fn new(command: u16) -> Self {
+        Self(command)
+    }
+}
