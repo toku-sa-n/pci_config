@@ -44,3 +44,6 @@ impl LatencyTimer {
         Self(timer)
     }
 }
+
+#[derive(Copy, Clone)]
+struct HeaderType(u8);
