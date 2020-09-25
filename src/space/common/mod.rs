@@ -52,3 +52,6 @@ impl HeaderType {
         Self(ty)
     }
 }
+
+#[derive(Copy, Clone)]
+struct Bist(u8);
