@@ -5,11 +5,16 @@
 struct Id {
     device: Device,
     vendor: Vendor,
+    revision: Revision,
 }
 
 impl Id {
-    fn new(device: Device, vendor: Vendor) -> Self {
-        Self { device, vendor }
+    fn new(device: Device, vendor: Vendor, revision: Revision) -> Self {
+        Self {
+            device,
+            vendor,
+            revision,
+        }
     }
 }
 
