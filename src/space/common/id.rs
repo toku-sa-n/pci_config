@@ -3,3 +3,8 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 struct Device(u16);
+impl Device {
+    fn new(device: u16) -> Self {
+        Self(device)
+    }
+}
