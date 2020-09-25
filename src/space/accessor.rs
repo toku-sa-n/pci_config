@@ -23,7 +23,8 @@ impl Accessor {
             index,
         }
     }
-    fn read(&self) -> u32 {
+
+    pub(crate) fn read(&self) -> u32 {
         const PORT_CONFIG_ADDR: PortWriteOnly<u32> = PortWriteOnly::new(0xcf8);
         const PORT_CONFIG_DATA: PortReadOnly<u32> = PortReadOnly::new(0xcfc);
 
