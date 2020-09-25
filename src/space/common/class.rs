@@ -6,6 +6,11 @@ struct Class {
     code: Code,
     sub: Sub,
 }
+impl Class {
+    fn new(code: Code, sub: Sub) -> Self {
+        Self { code, sub }
+    }
+}
 
 #[derive(Copy, Clone)]
 struct Code(u8);
