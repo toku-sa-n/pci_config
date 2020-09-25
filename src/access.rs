@@ -39,6 +39,10 @@ impl Device {
         assert!(device < 16);
         Self(device)
     }
+
+    fn as_u8(self) -> u8 {
+        self.0
+    }
 }
 
 #[derive(Copy, Clone)]
