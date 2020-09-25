@@ -19,3 +19,5 @@ impl Device {
         Self(device)
     }
 }
+
+struct Function(u8);
