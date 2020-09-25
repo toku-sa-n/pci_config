@@ -14,3 +14,8 @@ impl Command {
 
 #[derive(Copy, Clone)]
 struct Status(u16);
+impl Status {
+    fn new(status: u16) -> Self {
+        Self(status)
+    }
+}
