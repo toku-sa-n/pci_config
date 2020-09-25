@@ -36,3 +36,8 @@ impl Vendor {
 
 #[derive(Copy, Clone)]
 struct Revision(u8);
+impl Revision {
+    fn new(revision: u8) -> Self {
+        Self(revision)
+    }
+}
