@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-struct Access {
+pub(crate) struct Access {
     bus: Bus,
     device: Device,
     function: Function,
@@ -10,7 +10,7 @@ struct Access {
 }
 
 impl Access {
-    fn new(bus: Bus, device: Device, function: Function, index: RegisterIndex) -> Self {
+    pub(crate) fn new(bus: Bus, device: Device, function: Function, index: RegisterIndex) -> Self {
         Self {
             bus,
             device,
@@ -38,18 +38,18 @@ impl Device {
 }
 
 #[derive(Copy, Clone)]
-struct Function(u8);
+pub(crate) struct Function(u8);
 impl Function {
-    fn new(function: u8) -> Self {
+    pub(crate) fn new(function: u8) -> Self {
         assert!(function < 8);
         Self(function)
     }
 }
 
 #[derive(Copy, Clone)]
-struct RegisterIndex(u8);
+pub(crate) struct RegisterIndex(u8);
 impl RegisterIndex {
-    fn new(index: u8) -> Self {
+    pub(crate) fn new(index: u8) -> Self {
         assert!(index < 64);
         Self(index)
     }
