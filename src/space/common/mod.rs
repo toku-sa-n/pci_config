@@ -19,3 +19,6 @@ impl Status {
         Self(status)
     }
 }
+
+#[derive(Copy, Clone)]
+struct Interface(u16);
