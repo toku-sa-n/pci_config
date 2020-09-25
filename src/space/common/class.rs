@@ -3,3 +3,8 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 struct Code(u8);
+impl Code {
+    fn new(code: u8) -> Self {
+        Self(code)
+    }
+}
