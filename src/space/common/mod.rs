@@ -47,3 +47,8 @@ impl LatencyTimer {
 
 #[derive(Copy, Clone)]
 struct HeaderType(u8);
+impl HeaderType {
+    fn new(ty: u8) -> Self {
+        Self(ty)
+    }
+}
