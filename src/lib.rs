@@ -10,3 +10,5 @@ impl Bus {
         Self(bus)
     }
 }
+
+struct Device(u8);
