@@ -89,7 +89,7 @@ impl Function {
 #[derive(Copy, Clone)]
 pub(crate) struct RegisterIndex(u8);
 impl RegisterIndex {
-    const MAX: usize = 64;
+    pub(crate) const MAX: usize = 64;
 
     pub(crate) fn new(index: u8) -> Self {
         assert!(index < Self::MAX as u8);
