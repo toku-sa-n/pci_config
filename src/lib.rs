@@ -29,3 +29,9 @@ impl Function {
 }
 
 struct RegisterIndex(u8);
+impl RegisterIndex {
+    fn new(index: u8) -> Self {
+        assert!(index < 64);
+        Self(index)
+    }
+}
