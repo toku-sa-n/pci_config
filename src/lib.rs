@@ -13,3 +13,9 @@ struct IterDevices {
     bus: Bus,
     device: Device,
 }
+
+impl IterDevices {
+    fn new(bus: Bus, device: Device) -> Self {
+        Self { bus, device }
+    }
+}
