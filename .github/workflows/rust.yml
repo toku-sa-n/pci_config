@@ -21,7 +21,7 @@ jobs:
       with:
         toolchain: nightly
         override: true
-        component: clippy
+        components: clippy
     - name: Build
       run: cargo build --verbose
     - name: rust-clippy-check
