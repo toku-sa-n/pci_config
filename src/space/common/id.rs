@@ -8,3 +8,5 @@ impl Device {
         Self(device)
     }
 }
+
+struct Vendor(u16);
