@@ -8,3 +8,5 @@ impl Code {
         Self(code)
     }
 }
+
+struct Sub(u8);
