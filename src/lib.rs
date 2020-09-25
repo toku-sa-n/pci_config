@@ -6,6 +6,7 @@
 #![deny(clippy::all)]
 
 mod access;
+mod space;
 
 use access::{Bus, Device};
 
