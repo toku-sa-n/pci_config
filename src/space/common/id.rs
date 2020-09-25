@@ -28,3 +28,6 @@ impl Vendor {
         Self(vendor)
     }
 }
+
+#[derive(Copy, Clone)]
+struct Revision(u8);
