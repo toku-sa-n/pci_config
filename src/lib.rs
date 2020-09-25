@@ -7,7 +7,7 @@
 
 mod space;
 
-use space::access::{Bus, Device};
+use space::accessor::{Bus, Device};
 
 struct IterDevices {
     bus: Bus,
