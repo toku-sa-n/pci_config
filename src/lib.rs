@@ -12,6 +12,17 @@ struct Access {
     index: RegisterIndex,
 }
 
+impl Access {
+    fn new(bus: Bus, device: Device, function: Function, index: RegisterIndex) -> Self {
+        Self {
+            bus,
+            device,
+            function,
+            index,
+        }
+    }
+}
+
 #[derive(Copy, Clone)]
 struct Bus(u8);
 impl Bus {
