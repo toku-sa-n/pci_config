@@ -79,6 +79,10 @@ impl Function {
         Self(function)
     }
 
+    pub(crate) fn zero() -> Self {
+        Self::new(0)
+    }
+
     fn as_u8(self) -> u8 {
         self.0
     }
