@@ -27,3 +27,5 @@ impl Function {
         Self(function)
     }
 }
+
+struct RegisterIndex(u8);
