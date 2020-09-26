@@ -4,7 +4,7 @@
 
 use super::super::{accessor::RegisterIndex, registers::Registers};
 
-struct Id {
+pub(crate) struct Id {
     device: Device,
     vendor: Vendor,
     revision: Revision,
