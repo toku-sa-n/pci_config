@@ -19,6 +19,10 @@ impl Common {
     pub(crate) fn next_index(&self) -> RegisterIndex {
         self.next_pointer.as_register_index()
     }
+
+    pub(crate) fn ty(&self) -> Option<Type> {
+        self.id.ty()
+    }
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
