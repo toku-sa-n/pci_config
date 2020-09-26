@@ -3,3 +3,9 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 define_field!(HeaderType, u8, 3, 16, 0xff);
+
+enum Header {
+    Standard,
+    PciToPciBridge,
+    CardBusBridge,
+}
