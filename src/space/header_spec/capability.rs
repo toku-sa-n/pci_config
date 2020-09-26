@@ -6,6 +6,11 @@ use crate::space::accessor::RegisterIndex;
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
+struct Common {
+    id: Id,
+    next_ptr: NextPointer,
+}
+
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 struct Id(u8);
 
