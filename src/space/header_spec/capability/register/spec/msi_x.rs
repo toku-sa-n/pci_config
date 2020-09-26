@@ -56,4 +56,8 @@ impl PendingBitOffset {
         assert!(offset.trailing_zeros() >= 2);
         Self(Size::new(offset as _))
     }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new(registers[base + 2] & !0b111)
+    }
 }
