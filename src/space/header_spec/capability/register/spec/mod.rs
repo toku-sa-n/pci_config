@@ -6,6 +6,7 @@ mod msi;
 mod msi_x;
 
 use {
+    super::common::{Common, Type},
     crate::space::{accessor::RegisterIndex, registers::Registers},
     msi::TypeSpecMsi,
     msi_x::TypeSpecMsiX,
@@ -14,6 +15,17 @@ use {
 enum TypeSpec {
     Msi(TypeSpecMsi),
     MsiX(TypeSpecMsiX),
+}
+impl TypeSpec {
+    fn new(registers: &Registers, base: RegisterIndex, common: &Common) -> Option<Self> {
+        match common.ty() {
+            None => None,
+            Some(ty) => Some(match ty {
+                Type::Msi => Self::Msi(TypeSpecMsi::parse_registers(registers, base)),
+                Type::MsiX => Self::MsiX(TypeSpecMsiX::parse_registers(registers, base)),
+            }),
+        }
+    }
 }
 
 #[derive(Copy, Clone)]
