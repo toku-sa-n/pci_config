@@ -7,7 +7,7 @@ mod id;
 
 use {crate::space::registers::Registers, class::Class, id::Id};
 
-struct Common {
+pub(crate) struct Common {
     id: Id,
     command: Command,
     status: Status,
