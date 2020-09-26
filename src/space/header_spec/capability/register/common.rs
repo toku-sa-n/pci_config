@@ -29,6 +29,11 @@ impl Id {
     }
 }
 
+enum Type {
+    Msi,
+    MsiX,
+}
+
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 struct NextPointer(RegisterIndex);
 impl NextPointer {
