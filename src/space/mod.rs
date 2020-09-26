@@ -22,4 +22,5 @@ macro_rules! define_field {
 
 pub(crate) mod accessor;
 mod common;
+mod header_spec;
 mod registers;
