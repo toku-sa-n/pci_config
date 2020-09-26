@@ -4,6 +4,23 @@
 
 mod id;
 
+use {
+    super::{bar::Bar, CapabilitiesPointer, InterruptLine, InterruptPin},
+    id::Id,
+};
+
+struct HeaderSpecNonBridge {
+    bars: [Bar; 6],
+    cardbus_cis_pointer: CardbusCisPointer,
+    subsystem_id: Id,
+    expansion_rom_base_address: ExpansionRomBaseAddress,
+    capabilities_pointer: CapabilitiesPointer,
+    interrupt_line: InterruptLine,
+    interrupt_pin: InterruptPin,
+    min_grant: MinGrant,
+    max_latency: MaxLatency,
+}
+
 define_field!(CardbusCisPointer, u32, 0x0a, 0, 0xffff_ffff);
 define_field!(ExpansionRomBaseAddress, u32, 0x0c, 0, 0xffff_ffff);
 define_field!(MinGrant, u8, 0x0f, 16, 0xff);
