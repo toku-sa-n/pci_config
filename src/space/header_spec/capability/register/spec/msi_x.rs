@@ -30,3 +30,9 @@ impl PendingBitBir {
 }
 
 struct PendingBitOffset(Size<Bytes>);
+impl PendingBitOffset {
+    fn new(offset: u32) -> Self {
+        assert!(offset.trailing_zeros() >= 2);
+        Self(Size::new(offset as _))
+    }
+}
