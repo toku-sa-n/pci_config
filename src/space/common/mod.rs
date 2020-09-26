@@ -30,31 +30,6 @@ impl Common {
         let header_type = HeaderType::parse_registers(registers);
         let bist = Bist::parse_registers(registers);
 
-        Self::new(
-            id,
-            command,
-            status,
-            interface,
-            class,
-            cache_line_size,
-            latency_timer,
-            header_type,
-            bist,
-        )
-    }
-
-    #[allow(clippy::too_many_arguments)]
-    fn new(
-        id: Id,
-        command: Command,
-        status: Status,
-        interface: Interface,
-        class: Class,
-        cache_line_size: CacheLineSize,
-        latency_timer: LatencyTimer,
-        header_type: HeaderType,
-        bist: Bist,
-    ) -> Self {
         Self {
             id,
             command,
