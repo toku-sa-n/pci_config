@@ -12,3 +12,8 @@ impl MessageControl {
 
 #[derive(Copy, Clone)]
 struct MessageAddress(u64);
+impl MessageAddress {
+    fn new(address: u64) -> Self {
+        Self(address)
+    }
+}
