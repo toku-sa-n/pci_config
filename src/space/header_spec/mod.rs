@@ -3,12 +3,12 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 mod bar;
-mod non_bridge;
+mod standard;
 
-use non_bridge::HeaderSpecNonBridge;
+use standard::HeaderSpecStandard;
 
 pub(crate) enum HeaderSpec {
-    NonBridge(HeaderSpecNonBridge),
+    Standard(HeaderSpecStandard),
 }
 
 define_field!(CapabilitiesPointer, u8, 0x0d, 0, 0xff);
