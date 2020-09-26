@@ -27,6 +27,14 @@ impl Id {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
         Self((registers[base] & 0xff) as u8)
     }
+
+    fn ty(self) -> Option<Type> {
+        match self.0 {
+            0x05 => Some(Type::Msi),
+            0x11 => Some(Type::MsiX),
+            _ => None,
+        }
+    }
 }
 
 enum Type {
