@@ -3,6 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 mod common;
+mod spec;
 
 use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
