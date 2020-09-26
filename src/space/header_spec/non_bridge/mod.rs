@@ -9,7 +9,7 @@ use {
     id::Id,
 };
 
-struct HeaderSpecNonBridge {
+pub(crate) struct HeaderSpecNonBridge {
     bars: [Bar; 6],
     cardbus_cis_pointer: CardbusCisPointer,
     subsystem_id: Id,
