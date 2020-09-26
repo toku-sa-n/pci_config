@@ -3,3 +3,11 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 mod msi;
+
+#[derive(Copy, Clone)]
+struct MessageControl(u16);
+impl MessageControl {
+    fn new(control: u16) -> Self {
+        Self(control)
+    }
+}
