@@ -9,6 +9,7 @@ use {
 };
 
 struct TypeSpecMsiX {
+    message_control: MessageControl,
     bir: Bir,
     table_offset: TableOffset,
     pending_bit_bir: PendingBitBir,
