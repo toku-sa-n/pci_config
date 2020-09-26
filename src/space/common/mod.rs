@@ -13,8 +13,9 @@ use {
     id::Id,
 };
 
+/// The fields of PCI headers all PCI devices have.
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
-pub(crate) struct Common {
+pub struct Common {
     id: Id,
     command: Command,
     status: Status,
