@@ -100,7 +100,7 @@ impl RegisterIndex {
         Self::new(0)
     }
 
-    fn as_u8(self) -> u8 {
+    pub(crate) fn as_u8(self) -> u8 {
         self.0
     }
 }
