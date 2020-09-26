@@ -34,4 +34,8 @@ impl MessageData {
     fn new(data: u16) -> Self {
         Self(data)
     }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new((registers[base + 3] & 0xffff) as _)
+    }
 }
