@@ -5,7 +5,16 @@
 mod msi;
 mod msi_x;
 
-use crate::space::{accessor::RegisterIndex, registers::Registers};
+use {
+    crate::space::{accessor::RegisterIndex, registers::Registers},
+    msi::TypeSpecMsi,
+    msi_x::TypeSpecMsiX,
+};
+
+enum TypeSpec {
+    Msi(TypeSpecMsi),
+    MsiX(TypeSpecMsiX),
+}
 
 #[derive(Copy, Clone)]
 struct MessageControl(u16);
