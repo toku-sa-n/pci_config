@@ -4,3 +4,8 @@
 
 #[derive(Copy, Clone)]
 struct MessageControl(u16);
+impl MessageControl {
+    fn new(control: u16) -> Self {
+        Self(control)
+    }
+}
