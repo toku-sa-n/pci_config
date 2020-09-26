@@ -60,7 +60,7 @@ impl Bus {
 #[derive(Copy, Clone)]
 pub(crate) struct Device(u8);
 impl Device {
-    pub(crate) const MAX: u8 = 16;
+    pub(crate) const MAX: u8 = 32;
     pub(crate) fn new(device: u8) -> Self {
         assert!(device < Self::MAX);
         Self(device)
