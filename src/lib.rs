@@ -7,15 +7,42 @@
 
 mod space;
 
-use space::accessor::{Bus, Device};
+use {
+    core::iter::Iterator,
+    space::{
+        accessor::{Bus, Device},
+        registers::Registers,
+        Space,
+    },
+};
 
 struct IterDevices {
-    bus: Bus,
-    device: Device,
+    bus: u8,
+    device: u8,
 }
 
 impl IterDevices {
-    fn new(bus: Bus, device: Device) -> Self {
+    fn new(bus: u8, device: u8) -> Self {
         Self { bus, device }
+    }
+}
+
+impl Iterator for IterDevices {
+    type Item = Space;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        for bus in self.bus as usize..Bus::MAX {
+            for device in self.device..Device::MAX {
+                if let Some(registers) = Registers::fetch(Bus::new(bus as u8), Device::new(device))
+                {
+                    self.bus = bus as u8;
+                    self.device = device as u8 + 1;
+
+                    return Some(Space::parse_registers(&registers));
+                }
+            }
+        }
+
+        None
     }
 }
