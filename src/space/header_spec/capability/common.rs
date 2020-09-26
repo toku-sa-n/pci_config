@@ -15,6 +15,14 @@ impl Common {
 
         Self { id, next_pointer }
     }
+
+    pub(crate) fn next_index(&self) -> Option<RegisterIndex> {
+        if self.next_pointer.as_register_index().is_zero() {
+            None
+        } else {
+            Some(self.next_pointer.as_register_index())
+        }
+    }
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
@@ -30,5 +38,9 @@ struct NextPointer(RegisterIndex);
 impl NextPointer {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
         Self(RegisterIndex::new(((registers[base] >> 8) & 0xff) as u8))
+    }
+
+    fn as_register_index(&self) -> RegisterIndex {
+        self.0
     }
 }
