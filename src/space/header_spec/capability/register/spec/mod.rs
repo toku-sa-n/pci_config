@@ -17,7 +17,7 @@ pub(crate) enum TypeSpec {
     MsiX(TypeSpecMsiX),
 }
 impl TypeSpec {
-    fn new(registers: &Registers, base: RegisterIndex, common: &Common) -> Option<Self> {
+    pub(crate) fn new(registers: &Registers, base: RegisterIndex, common: &Common) -> Option<Self> {
         match common.ty() {
             None => None,
             Some(ty) => Some(match ty {
