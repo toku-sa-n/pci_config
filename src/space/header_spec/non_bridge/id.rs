@@ -7,5 +7,14 @@ struct Id {
     subsystem_id: SubsystemId,
 }
 
+impl Id {
+    fn new(subsystem_vendor_id: SubsystemVendorId, subsystem_id: SubsystemId) -> Self {
+        Self {
+            subsystem_vendor_id,
+            subsystem_id,
+        }
+    }
+}
+
 define_field!(SubsystemVendorId, u16, 0x0b, 0, 0xffff);
 define_field!(SubsystemId, u16, 0x0b, 16, 0xffff);
