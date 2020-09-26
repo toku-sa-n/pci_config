@@ -18,6 +18,9 @@ use {
     },
 };
 
+/// An iterator which returns a structure containing information of PCI configuration space.
+///
+/// This iterator searchs all bus numbers and device numbers
 pub fn iter_device() -> impl Iterator<Item = Space> {
     IterDevices::new(0, 0)
 }
