@@ -9,3 +9,6 @@ impl MessageControl {
         Self(control)
     }
 }
+
+#[derive(Copy, Clone)]
+struct MessageAddress(u64);
