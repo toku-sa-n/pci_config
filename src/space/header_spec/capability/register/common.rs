@@ -37,7 +37,7 @@ impl Id {
     }
 }
 
-enum Type {
+pub(crate) enum Type {
     Msi,
     MsiX,
 }
