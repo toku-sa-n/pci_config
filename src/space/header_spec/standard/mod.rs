@@ -7,7 +7,7 @@ mod id;
 use {
     super::{
         bar::{self, Bar},
-        capability::CapabilitiesPointer,
+        capability::Pointer,
         InterruptLine, InterruptPin,
     },
     crate::space::registers::Registers,
@@ -20,7 +20,7 @@ pub(crate) struct HeaderSpecStandard {
     cardbus_cis_pointer: CardbusCisPointer,
     subsystem_id: Id,
     expansion_rom_base_address: ExpansionRomBaseAddress,
-    capabilities_pointer: CapabilitiesPointer,
+    capabilities_pointer: Pointer,
     interrupt_line: InterruptLine,
     interrupt_pin: InterruptPin,
     min_grant: MinGrant,
@@ -33,7 +33,7 @@ impl HeaderSpecStandard {
         let cardbus_cis_pointer = CardbusCisPointer::parse_registers(registers);
         let subsystem_id = Id::parse_registers(registers);
         let expansion_rom_base_address = ExpansionRomBaseAddress::parse_registers(registers);
-        let capabilities_pointer = CapabilitiesPointer::parse_registers(registers);
+        let capabilities_pointer = Pointer::parse_registers(registers);
         let interrupt_line = InterruptLine::parse_registers(registers);
         let interrupt_pin = InterruptPin::parse_registers(registers);
         let min_grant = MinGrant::parse_registers(registers);
