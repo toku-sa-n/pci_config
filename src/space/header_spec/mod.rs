@@ -3,3 +3,5 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 mod non_bridge;
+
+define_field!(CapabilityPointer, u8, 0x0d, 0, 0xff);
