@@ -10,6 +10,7 @@ use {
     standard::HeaderSpecStandard,
 };
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub(crate) enum HeaderSpec {
     Standard(HeaderSpecStandard),
 }

@@ -13,6 +13,7 @@ use {
     id::Id,
 };
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub(crate) struct Common {
     id: Id,
     command: Command,

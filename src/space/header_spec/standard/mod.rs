@@ -13,6 +13,7 @@ use {
     id::Id,
 };
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub(crate) struct HeaderSpecStandard {
     bars: [Bar; 6],
     cardbus_cis_pointer: CardbusCisPointer,

@@ -7,7 +7,7 @@
 #![no_std]
 #![deny(clippy::all)]
 
-mod space;
+pub mod space;
 
 use {
     core::iter::Iterator,

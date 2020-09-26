@@ -4,6 +4,7 @@
 
 use crate::space::registers::Registers;
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub(crate) struct Class {
     code: Code,
     sub: Sub,
