@@ -12,6 +12,19 @@ struct TypeSpecMsi {
     message_address: MessageAddress,
     message_data: MessageData,
 }
+impl TypeSpecMsi {
+    fn new(
+        message_control: MessageControl,
+        message_address: MessageAddress,
+        message_data: MessageData,
+    ) -> Self {
+        Self {
+            message_control,
+            message_address,
+            message_data,
+        }
+    }
+}
 
 #[derive(Copy, Clone)]
 struct MessageAddress(u64);
