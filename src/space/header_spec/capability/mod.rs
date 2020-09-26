@@ -11,6 +11,11 @@ use {
 };
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
+impl Pointer {
+    fn as_register_index(self) -> RegisterIndex {
+        RegisterIndex::new(self.0 >> 2)
+    }
+}
 
 struct IterRegisters<'a> {
     registers: &'a Registers,
