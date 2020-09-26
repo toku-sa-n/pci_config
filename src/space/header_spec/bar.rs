@@ -3,7 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 #[derive(Copy, Clone)]
-struct Bar(u32);
+pub(crate) struct Bar(u32);
 impl Bar {
     fn new(bar: u32) -> Self {
         Self(bar)
