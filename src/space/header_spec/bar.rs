@@ -4,7 +4,7 @@
 
 use crate::space::{accessor::RegisterIndex, registers::Registers};
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Default)]
 pub(crate) struct Bar(u32);
 impl Bar {
     fn parse_registers(registers: &Registers, index: Index) -> Self {
