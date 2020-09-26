@@ -33,6 +33,10 @@ impl TableOffset {
         assert!(offset.trailing_zeros() >= 2);
         Self(Size::new(offset as _))
     }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new(registers[base + 1] & !0b111)
+    }
 }
 
 struct PendingBitBir(bar::Index);
