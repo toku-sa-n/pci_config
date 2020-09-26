@@ -27,7 +27,7 @@ pub struct Common {
     bist: Bist,
 }
 impl Common {
-    pub(crate) fn parse_registers(registers: &Registers) -> Self {
+    pub(crate) fn new(registers: &Registers) -> Self {
         let id = Id::new(registers);
         let command = Command::new(registers);
         let status = Status::new(registers);
