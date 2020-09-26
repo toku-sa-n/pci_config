@@ -26,3 +26,8 @@ impl Id {
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 struct NextPointer(RegisterIndex);
+impl NextPointer {
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self(RegisterIndex::new(((registers[base] >> 8) & 0xff) as u8))
+    }
+}
