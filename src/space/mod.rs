@@ -24,3 +24,10 @@ pub(crate) mod accessor;
 mod common;
 mod header_spec;
 mod registers;
+
+use {common::Common, header_spec::HeaderSpec};
+
+struct Space {
+    common: Common,
+    header_spec: HeaderSpec,
+}
