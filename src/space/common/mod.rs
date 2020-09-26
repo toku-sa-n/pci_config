@@ -6,7 +6,7 @@ mod class;
 mod header;
 mod id;
 
-use {crate::space::registers::Registers, class::Class, id::Id};
+use {crate::space::registers::Registers, class::Class, header::HeaderType, id::Id};
 
 pub(crate) struct Common {
     id: Id,
@@ -50,5 +50,4 @@ define_field!(Status, u16, 1, 16, 0xffff);
 define_field!(Interface, u8, 2, 8, 0xff);
 define_field!(CacheLineSize, u8, 3, 0, 0xff);
 define_field!(LatencyTimer, u8, 3, 8, 0xff);
-define_field!(HeaderType, u8, 3, 16, 0xff);
 define_field!(Bist, u8, 3, 24, 0xff);

@@ -5,7 +5,7 @@
 macro_rules! define_field {
     ($name:ident,$ty:ty,$index:expr,$shift:expr,$mask:expr) => {
         #[derive(Copy, Clone)]
-        struct $name($ty);
+        pub(crate) struct $name($ty);
         impl $name {
             pub(crate) fn parse_registers(registers: &crate::space::registers::Registers) -> Self {
                 Self::new(
@@ -25,7 +25,7 @@ mod common;
 mod header_spec;
 mod registers;
 
-use {common::Common, header_spec::HeaderSpec};
+use {common::Common, header_spec::HeaderSpec, registers::Registers};
 
 struct Space {
     common: Common,
@@ -33,6 +33,10 @@ struct Space {
 }
 
 impl Space {
+    fn parse_registers(registers: &Registers) -> Self {
+        unimplemented!()
+    }
+
     fn new(common: Common, header_spec: HeaderSpec) -> Self {
         Self {
             common,
