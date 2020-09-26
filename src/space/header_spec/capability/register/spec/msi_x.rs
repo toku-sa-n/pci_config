@@ -15,3 +15,9 @@ impl Bir {
 }
 
 struct TableOffset(Size<Bytes>);
+impl TableOffset {
+    fn new(offset: Size<Bytes>) -> Self {
+        assert!(offset.as_usize().trailing_zeros() >= 2);
+        Self(offset)
+    }
+}
