@@ -15,6 +15,23 @@ struct TypeSpecMsiX {
     pending_bit_bir: PendingBitBir,
     pending_bit_offset: PendingBitOffset,
 }
+impl TypeSpecMsiX {
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        let message_control = MessageControl::parse_registers(registers, base);
+        let bir = Bir::parse_registers(registers, base);
+        let table_offset = TableOffset::parse_registers(registers, base);
+        let pending_bit_bir = PendingBitBir::parse_registers(registers, base);
+        let pending_bit_offset = PendingBitOffset::parse_registers(registers, base);
+
+        Self {
+            message_control,
+            bir,
+            table_offset,
+            pending_bit_bir,
+            pending_bit_offset,
+        }
+    }
+}
 
 struct Bir(bar::Index);
 impl Bir {
