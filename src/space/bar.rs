@@ -4,3 +4,8 @@
 
 #[derive(Copy, Clone)]
 struct Bar(u32);
+impl Bar {
+    fn new(bar: u32) -> Self {
+        Self(bar)
+    }
+}
