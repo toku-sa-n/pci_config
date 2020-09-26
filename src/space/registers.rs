@@ -9,7 +9,7 @@ use {
 
 pub(crate) struct Registers([u32; RegisterIndex::MAX]);
 impl Registers {
-    fn fetch(bus: Bus, device: Device) -> Option<Self> {
+    pub(crate) fn fetch(bus: Bus, device: Device) -> Option<Self> {
         if !Self::exist(bus, device) {
             None
         } else {
