@@ -18,6 +18,10 @@ use {
     },
 };
 
+pub fn iter_device() -> impl Iterator<Item = Space> {
+    IterDevices::new(0, 0)
+}
+
 struct IterDevices {
     bus: u8,
     device: u8,
