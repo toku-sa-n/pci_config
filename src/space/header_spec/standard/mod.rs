@@ -28,7 +28,7 @@ pub(crate) struct HeaderSpecStandard {
 }
 
 impl HeaderSpecStandard {
-    pub(crate) fn parse_registers(registers: &Registers) -> Self {
+    pub(crate) fn new(registers: &Registers) -> Self {
         let bars = Self::parse_bars(registers);
         let cardbus_cis_pointer = CardbusCisPointer::new(registers);
         let subsystem_id = Id::new(registers);

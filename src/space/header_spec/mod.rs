@@ -19,7 +19,7 @@ pub(crate) enum HeaderSpec {
 impl HeaderSpec {
     pub(crate) fn new(registers: &Registers, header: Header) -> Self {
         match header {
-            Header::Standard => Self::Standard(HeaderSpecStandard::parse_registers(registers)),
+            Header::Standard => Self::Standard(HeaderSpecStandard::new(registers)),
             _ => todo!(),
         }
     }
