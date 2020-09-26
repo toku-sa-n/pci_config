@@ -3,3 +3,6 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
+
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
+struct Id(u8);
