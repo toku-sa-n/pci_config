@@ -2,7 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-use x86_64::instructions::port::{PortReadOnly, PortWriteOnly};
+use {
+    core::ops::Add,
+    x86_64::instructions::port::{PortReadOnly, PortWriteOnly},
+};
 
 pub(crate) struct Accessor {
     bus: Bus,
@@ -108,5 +111,11 @@ impl RegisterIndex {
 
     pub(crate) fn as_u8(self) -> u8 {
         self.0
+    }
+}
+impl Add<u8> for RegisterIndex {
+    type Output = Self;
+    fn add(self, rhs: u8) -> Self::Output {
+        Self::new(self.0 + rhs)
     }
 }
