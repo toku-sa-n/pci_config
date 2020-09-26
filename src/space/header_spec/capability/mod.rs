@@ -14,6 +14,13 @@ define_field!(Pointer, u8, 0x0d, 0, 0xff);
 struct IterRegisters {
     next: RegisterIndex,
 }
+impl IterRegisters {
+    fn new(capability_pointer: RegisterIndex) -> Self {
+        Self {
+            next: capability_pointer,
+        }
+    }
+}
 
 struct Register {
     common: Common,
