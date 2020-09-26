@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-struct Id {
+pub(crate) struct Id {
     subsystem_vendor_id: SubsystemVendorId,
     subsystem_id: SubsystemId,
 }
