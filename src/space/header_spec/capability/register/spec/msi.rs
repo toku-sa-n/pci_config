@@ -24,6 +24,14 @@ impl TypeSpecMsi {
             message_data,
         }
     }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        let control = MessageControl::parse_registers(registers, base);
+        let address = MessageAddress::parse_registers(registers, base);
+        let data = MessageData::parse_registers(registers, base);
+
+        Self::new(control, address, data)
+    }
 }
 
 #[derive(Copy, Clone)]
