@@ -6,3 +6,5 @@ Cargo.lock
 
 /target
 *.swp
+*.temp
+*.lock
