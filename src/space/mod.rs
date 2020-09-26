@@ -13,6 +13,7 @@ macro_rules! define_field {
                         & $mask) as $ty,
                 )
             }
+
             fn new(val: $ty) -> Self {
                 Self(val)
             }
@@ -34,7 +35,10 @@ struct Space {
 
 impl Space {
     fn parse_registers(registers: &Registers) -> Self {
-        unimplemented!()
+        let common = Common::parse_registers(registers);
+        let header_spec = HeaderSpec::parse_registers(registers, common.header_type());
+
+        Self::new(common, header_spec)
     }
 
     fn new(common: Common, header_spec: HeaderSpec) -> Self {
