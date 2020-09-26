@@ -17,9 +17,9 @@ impl Bar {
 }
 
 #[derive(Copy, Clone)]
-struct Index(usize);
+pub(crate) struct Index(usize);
 impl Index {
-    fn new(index: usize) -> Self {
+    pub(crate) fn new(index: usize) -> Self {
         assert!(index < 6);
         Self(index)
     }
