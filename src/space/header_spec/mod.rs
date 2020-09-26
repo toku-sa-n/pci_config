@@ -7,7 +7,7 @@ mod non_bridge;
 
 use non_bridge::HeaderSpecNonBridge;
 
-enum HeaderSpec {
+pub(crate) enum HeaderSpec {
     NonBridge(HeaderSpecNonBridge),
 }
 
