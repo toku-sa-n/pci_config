@@ -28,3 +28,5 @@ impl PendingBitBir {
         Self(bir)
     }
 }
+
+struct PendingBitOffset(Size<Bytes>);
