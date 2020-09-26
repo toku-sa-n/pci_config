@@ -7,17 +7,34 @@ mod common;
 use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
     common::Common,
+    core::iter::Iterator,
 };
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
-struct IterRegisters {
+struct IterRegisters<'a> {
+    registers: &'a Registers,
     next: RegisterIndex,
 }
-impl IterRegisters {
-    fn new(capability_pointer: RegisterIndex) -> Self {
+impl<'a> IterRegisters<'a> {
+    fn new(registers: &'a Registers, capability_pointer: RegisterIndex) -> Self {
         Self {
             next: capability_pointer,
+            registers,
+        }
+    }
+}
+impl<'a> Iterator for IterRegisters<'a> {
+    type Item = Register;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.next.is_zero() {
+            None
+        } else {
+            let register = Register::parse_registers(self.registers, self.next);
+            self.next = register.next_index();
+
+            Some(register)
         }
     }
 }
@@ -30,5 +47,9 @@ impl Register {
         let common = Common::parse_registers(registers, base);
 
         Self { common }
+    }
+
+    fn next_index(&self) -> RegisterIndex {
+        self.common.next_index()
     }
 }

@@ -16,12 +16,8 @@ impl Common {
         Self { id, next_pointer }
     }
 
-    pub(crate) fn next_index(&self) -> Option<RegisterIndex> {
-        if self.next_pointer.as_register_index().is_zero() {
-            None
-        } else {
-            Some(self.next_pointer.as_register_index())
-        }
+    pub(crate) fn next_index(&self) -> RegisterIndex {
+        self.next_pointer.as_register_index()
     }
 }
 
