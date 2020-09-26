@@ -5,7 +5,11 @@
 mod id;
 
 use {
-    super::{bar::Bar, CapabilitiesPointer, InterruptLine, InterruptPin},
+    super::{
+        bar::{self, Bar},
+        CapabilitiesPointer, InterruptLine, InterruptPin,
+    },
+    crate::space::registers::Registers,
     id::Id,
 };
 
@@ -19,6 +23,41 @@ pub(crate) struct HeaderSpecNonBridge {
     interrupt_pin: InterruptPin,
     min_grant: MinGrant,
     max_latency: MaxLatency,
+}
+
+impl HeaderSpecNonBridge {
+    fn parse_registers(registers: &Registers) -> Self {
+        let bars = Self::parse_bars(registers);
+        let cardbus_cis_pointer = CardbusCisPointer::parse_registers(registers);
+        let subsystem_id = Id::parse_registers(registers);
+        let expansion_rom_base_address = ExpansionRomBaseAddress::parse_registers(registers);
+        let capabilities_pointer = CapabilitiesPointer::parse_registers(registers);
+        let interrupt_line = InterruptLine::parse_registers(registers);
+        let interrupt_pin = InterruptPin::parse_registers(registers);
+        let min_grant = MinGrant::parse_registers(registers);
+        let max_latency = MaxLatency::parse_registers(registers);
+
+        Self {
+            bars,
+            cardbus_cis_pointer,
+            subsystem_id,
+            expansion_rom_base_address,
+            capabilities_pointer,
+            interrupt_line,
+            interrupt_pin,
+            min_grant,
+            max_latency,
+        }
+    }
+
+    fn parse_bars(registers: &Registers) -> [Bar; 6] {
+        let mut bars = [Bar::default(); 6];
+        for i in 0..6 {
+            bars[i] = Bar::parse_registers(registers, bar::Index::new(i));
+        }
+
+        bars
+    }
 }
 
 define_field!(CardbusCisPointer, u32, 0x0a, 0, 0xffff_ffff);
