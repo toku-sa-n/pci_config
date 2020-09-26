@@ -20,11 +20,6 @@ impl Id {
     }
 }
 
-define_field!(Device, u16);
-impl Device {
-    fn parse_registers(registers: &Registers) -> Self {
-        Self::new(((registers[RegisterIndex::new(0)] >> 16) & 0xffff) as _)
-    }
-}
-define_field!(Vendor, u16);
-define_field!(Revision, u8);
+define_field!(Device, u16, 0, 16, 0xffff);
+define_field!(Vendor, u16, 0, 0, 0xffff);
+define_field!(Revision, u8, 2, 0, 0xff);

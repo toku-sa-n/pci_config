@@ -12,5 +12,5 @@ impl Class {
     }
 }
 
-define_field!(Code, u8);
-define_field!(Sub, u8);
+define_field!(Code, u8, 2, 24, 0xff);
+define_field!(Sub, u8, 2, 16, 0xff);

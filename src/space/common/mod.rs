@@ -5,10 +5,10 @@
 mod class;
 mod id;
 
-define_field!(Command, u16);
-define_field!(Status, u16);
-define_field!(Interface, u8);
-define_field!(CacheLineSize, u8);
-define_field!(LatencyTimer, u8);
-define_field!(HeaderType, u8);
-define_field!(Bist, u8);
+define_field!(Command, u16, 1, 0, 0xffff);
+define_field!(Status, u16, 1, 16, 0xffff);
+define_field!(Interface, u8, 2, 8, 0xff);
+define_field!(CacheLineSize, u8, 3, 0, 0xff);
+define_field!(LatencyTimer, u8, 3, 8, 0xff);
+define_field!(HeaderType, u8, 3, 16, 0xff);
+define_field!(Bist, u8, 3, 24, 0xff);

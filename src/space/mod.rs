@@ -3,12 +3,18 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 macro_rules! define_field {
-    ($name:ident,$ty:ty) => {
+    ($name:ident,$ty:ty,$index:expr,$shift:expr,$mask:expr) => {
         #[derive(Copy, Clone)]
         struct $name($ty);
         impl $name {
             fn new(val: $ty) -> Self {
                 Self(val)
+            }
+            fn parse_registers(registers: &crate::space::registers::Registers) -> Self {
+                Self::new(
+                    ((registers[crate::space::accessor::RegisterIndex::new($index)] >> $shift)
+                        & $mask) as $ty,
+                )
             }
         }
     };
