@@ -25,7 +25,7 @@ impl TypeSpecMsi {
         }
     }
 
-    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+    pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
         let control = MessageControl::parse_registers(registers, base);
         let address = MessageAddress::parse_registers(registers, base);
         let data = MessageData::parse_registers(registers, base);
