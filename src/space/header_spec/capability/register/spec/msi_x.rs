@@ -23,3 +23,8 @@ impl TableOffset {
 }
 
 struct PendingBitBir(bar::Index);
+impl PendingBitBir {
+    fn new(bir: bar::Index) -> Self {
+        Self(bir)
+    }
+}
