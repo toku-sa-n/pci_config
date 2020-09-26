@@ -9,6 +9,13 @@ define_field!(Pointer, u8, 0x0d, 0, 0xff);
 struct CapabilityRegister {
     common: Common,
 }
+impl CapabilityRegister {
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        let common = Common::parse_registers(registers, base);
+
+        Self { common }
+    }
+}
 
 struct Common {
     id: Id,
