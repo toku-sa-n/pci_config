@@ -5,10 +5,16 @@
 mod msi;
 mod msi_x;
 
+use crate::space::{accessor::RegisterIndex, registers::Registers};
+
 #[derive(Copy, Clone)]
 struct MessageControl(u16);
 impl MessageControl {
     fn new(control: u16) -> Self {
         Self(control)
+    }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new(((registers[base] >> 16) & 0xffff) as _)
     }
 }
