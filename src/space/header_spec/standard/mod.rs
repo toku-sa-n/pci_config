@@ -7,7 +7,7 @@ mod id;
 use {
     super::{
         bar::{self, Bar},
-        capabilities_list::CapabilitiesPointer,
+        capability::CapabilitiesPointer,
         InterruptLine, InterruptPin,
     },
     crate::space::registers::Registers,
