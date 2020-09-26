@@ -4,7 +4,7 @@
 
 use super::accessor::{Accessor, Bus, Device, Function, RegisterIndex};
 
-struct Registers([u32; RegisterIndex::MAX]);
+pub(crate) struct Registers([u32; RegisterIndex::MAX]);
 impl Registers {
     fn fetch(bus: Bus, device: Device) -> Option<Self> {
         if !Self::exist(bus, device) {
