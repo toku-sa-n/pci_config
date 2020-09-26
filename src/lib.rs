@@ -47,7 +47,7 @@ impl Iterator for IterDevices {
                     self.bus = bus as u8;
                     self.device = device as u8 + 1;
 
-                    return Some(Space::parse_registers(&registers));
+                    return Some(Space::new(&registers));
                 }
             }
         }
