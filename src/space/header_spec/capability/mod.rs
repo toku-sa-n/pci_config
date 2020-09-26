@@ -2,6 +2,8 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+mod common;
+
 use crate::space::{accessor::RegisterIndex, registers::Registers};
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
