@@ -5,7 +5,7 @@
 mod class;
 mod id;
 
-use {class::Class, id::Id};
+use {crate::space::registers::Registers, class::Class, id::Id};
 
 struct Common {
     id: Id,
@@ -19,6 +19,7 @@ struct Common {
     bist: Bist,
 }
 impl Common {
+    #[allow(clippy::too_many_arguments)]
     fn new(
         id: Id,
         command: Command,
@@ -41,6 +42,10 @@ impl Common {
             header_type,
             bist,
         }
+    }
+
+    fn parse_registers(registers: &Registers) -> Self {
+        unimplemented!();
     }
 }
 
