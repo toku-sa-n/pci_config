@@ -13,9 +13,9 @@ pub(crate) struct Id {
 
 impl Id {
     pub(crate) fn new(registers: &Registers) -> Self {
-        let device = Device::parse_registers(registers);
-        let vendor = Vendor::parse_registers(registers);
-        let revision = Revision::parse_registers(registers);
+        let device = Device::new(registers);
+        let vendor = Vendor::new(registers);
+        let revision = Revision::new(registers);
 
         Self {
             device,

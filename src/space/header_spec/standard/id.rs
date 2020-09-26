@@ -11,14 +11,10 @@ pub(crate) struct Id {
 }
 
 impl Id {
-    pub(crate) fn parse_registers(registers: &Registers) -> Self {
-        let subsystem_vendor_id = SubsystemVendorId::parse_registers(registers);
-        let subsystem_id = SubsystemId::parse_registers(registers);
+    pub(crate) fn new(registers: &Registers) -> Self {
+        let subsystem_vendor_id = SubsystemVendorId::new(registers);
+        let subsystem_id = SubsystemId::new(registers);
 
-        Self::new(subsystem_vendor_id, subsystem_id)
-    }
-
-    fn new(subsystem_vendor_id: SubsystemVendorId, subsystem_id: SubsystemId) -> Self {
         Self {
             subsystem_vendor_id,
             subsystem_id,

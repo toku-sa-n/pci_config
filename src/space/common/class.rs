@@ -10,14 +10,10 @@ pub(crate) struct Class {
     sub: Sub,
 }
 impl Class {
-    pub(crate) fn parse_registers(registers: &Registers) -> Self {
-        let code = Code::parse_registers(registers);
-        let sub = Sub::parse_registers(registers);
+    pub(crate) fn new(registers: &Registers) -> Self {
+        let code = Code::new(registers);
+        let sub = Sub::new(registers);
 
-        Self::new(code, sub)
-    }
-
-    fn new(code: Code, sub: Sub) -> Self {
         Self { code, sub }
     }
 }

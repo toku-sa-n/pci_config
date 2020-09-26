@@ -29,14 +29,14 @@ pub struct Common {
 impl Common {
     pub(crate) fn parse_registers(registers: &Registers) -> Self {
         let id = Id::new(registers);
-        let command = Command::parse_registers(registers);
-        let status = Status::parse_registers(registers);
-        let interface = Interface::parse_registers(registers);
-        let class = Class::parse_registers(registers);
-        let cache_line_size = CacheLineSize::parse_registers(registers);
-        let latency_timer = LatencyTimer::parse_registers(registers);
-        let header_type = HeaderType::parse_registers(registers);
-        let bist = Bist::parse_registers(registers);
+        let command = Command::new(registers);
+        let status = Status::new(registers);
+        let interface = Interface::new(registers);
+        let class = Class::new(registers);
+        let cache_line_size = CacheLineSize::new(registers);
+        let latency_timer = LatencyTimer::new(registers);
+        let header_type = HeaderType::new(registers);
+        let bist = Bist::new(registers);
 
         Self {
             id,
