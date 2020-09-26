@@ -20,3 +20,8 @@ impl MessageAddress {
 
 #[derive(Copy, Clone)]
 struct MessageData(u16);
+impl MessageData {
+    fn new(data: u16) -> Self {
+        Self(data)
+    }
+}
