@@ -17,3 +17,6 @@ impl MessageAddress {
         Self(address)
     }
 }
+
+#[derive(Copy, Clone)]
+struct MessageData(u16);
