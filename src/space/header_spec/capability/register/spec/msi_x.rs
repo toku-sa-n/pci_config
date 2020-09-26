@@ -21,3 +21,5 @@ impl TableOffset {
         Self(Size::new(offset as _))
     }
 }
+
+struct PendingBitBir(bar::Index);
