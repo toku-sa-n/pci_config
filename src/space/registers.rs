@@ -2,7 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-use super::accessor::{Accessor, Bus, Device, Function, RegisterIndex};
+use {
+    super::accessor::{Accessor, Bus, Device, Function, RegisterIndex},
+    core::ops::Index,
+};
 
 pub(crate) struct Registers([u32; RegisterIndex::MAX]);
 impl Registers {
@@ -27,5 +30,12 @@ impl Registers {
         let ids = accessor.read();
 
         ids != !0
+    }
+}
+impl Index<RegisterIndex> for Registers {
+    type Output = u32;
+
+    fn index(&self, index: RegisterIndex) -> &Self::Output {
+        &self.0[index.as_u8() as usize]
     }
 }
