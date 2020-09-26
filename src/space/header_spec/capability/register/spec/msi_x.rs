@@ -4,7 +4,7 @@
 
 use {
     super::MessageControl,
-    crate::space::header_spec::bar,
+    crate::space::{accessor::RegisterIndex, header_spec::bar, registers::Registers},
     os_units::{Bytes, Size},
 };
 
@@ -20,6 +20,10 @@ struct Bir(bar::Index);
 impl Bir {
     fn new(bir: bar::Index) -> Self {
         Self(bir)
+    }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new(bar::Index::new((registers[base + 1] & 0b111) as _))
     }
 }
 
