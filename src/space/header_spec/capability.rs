@@ -6,6 +6,10 @@ use crate::space::{accessor::RegisterIndex, registers::Registers};
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
+struct CapabilityRegister {
+    common: Common,
+}
+
 struct Common {
     id: Id,
     next_pointer: NextPointer,
