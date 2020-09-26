@@ -6,10 +6,10 @@ use crate::space::{accessor::RegisterIndex, registers::Registers};
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
-struct CapabilityRegister {
+struct Register {
     common: Common,
 }
-impl CapabilityRegister {
+impl Register {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
         let common = Common::parse_registers(registers, base);
 
