@@ -19,6 +19,30 @@ struct Common {
     bist: Bist,
 }
 impl Common {
+    fn parse_registers(registers: &Registers) -> Self {
+        let id = Id::parse_registers(registers);
+        let command = Command::parse_registers(registers);
+        let status = Status::parse_registers(registers);
+        let interface = Interface::parse_registers(registers);
+        let class = Class::parse_registers(registers);
+        let cache_line_size = CacheLineSize::parse_registers(registers);
+        let latency_timer = LatencyTimer::parse_registers(registers);
+        let header_type = HeaderType::parse_registers(registers);
+        let bist = Bist::parse_registers(registers);
+
+        Self::new(
+            id,
+            command,
+            status,
+            interface,
+            class,
+            cache_line_size,
+            latency_timer,
+            header_type,
+            bist,
+        )
+    }
+
     #[allow(clippy::too_many_arguments)]
     fn new(
         id: Id,
@@ -42,10 +66,6 @@ impl Common {
             header_type,
             bist,
         }
-    }
-
-    fn parse_registers(registers: &Registers) -> Self {
-        unimplemented!();
     }
 }
 
