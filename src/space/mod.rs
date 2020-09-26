@@ -34,7 +34,7 @@ pub(crate) struct Space {
 }
 
 impl Space {
-    fn parse_registers(registers: &Registers) -> Self {
+    pub(crate) fn parse_registers(registers: &Registers) -> Self {
         let common = Common::parse_registers(registers);
         let header_spec = HeaderSpec::parse_registers(registers, common.header_type());
 
