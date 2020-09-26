@@ -8,7 +8,7 @@ use {
     os_units::{Bytes, Size},
 };
 
-struct TypeSpecMsiX {
+pub(crate) struct TypeSpecMsiX {
     message_control: MessageControl,
     bir: Bir,
     table_offset: TableOffset,
