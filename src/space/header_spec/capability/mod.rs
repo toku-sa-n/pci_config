@@ -11,6 +11,10 @@ use {
 
 define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
+struct IterRegisters {
+    next: RegisterIndex,
+}
+
 struct Register {
     common: Common,
 }
