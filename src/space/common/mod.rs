@@ -5,6 +5,20 @@
 mod class;
 mod id;
 
+use {class::Class, id::Id};
+
+struct Common {
+    id: Id,
+    command: Command,
+    status: Status,
+    interface: Interface,
+    class: Class,
+    cache_line_size: CacheLineSize,
+    latency_timer: LatencyTimer,
+    header_type: HeaderType,
+    bist: Bist,
+}
+
 define_field!(Command, u16, 1, 0, 0xffff);
 define_field!(Status, u16, 1, 16, 0xffff);
 define_field!(Interface, u8, 2, 8, 0xff);
