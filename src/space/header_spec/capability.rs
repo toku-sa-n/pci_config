@@ -8,11 +8,14 @@ define_field!(Pointer, u8, 0x0d, 0, 0xff);
 
 struct Common {
     id: Id,
-    next_ptr: NextPointer,
+    next_pointer: NextPointer,
 }
 impl Common {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        unimplemented!()
+        let id = Id::parse_registers(registers, base);
+        let next_pointer = NextPointer::parse_registers(registers, base);
+
+        Self { id, next_pointer }
     }
 }
 
