@@ -6,7 +6,12 @@ mod class;
 mod header;
 mod id;
 
-use {crate::space::registers::Registers, class::Class, header::HeaderType, id::Id};
+use {
+    crate::space::registers::Registers,
+    class::Class,
+    header::{Header, HeaderType},
+    id::Id,
+};
 
 pub(crate) struct Common {
     id: Id,
@@ -42,6 +47,10 @@ impl Common {
             header_type,
             bist,
         }
+    }
+
+    pub(crate) fn header_type(&self) -> Header {
+        self.header_type.ty()
     }
 }
 
