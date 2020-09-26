@@ -62,3 +62,9 @@ define_field!(Interface, u8, 2, 8, 0xff);
 define_field!(CacheLineSize, u8, 3, 0, 0xff);
 define_field!(LatencyTimer, u8, 3, 8, 0xff);
 define_field!(Bist, u8, 3, 24, 0xff);
+
+impl Status {
+    fn capability_pointer_exists(self) -> bool {
+        self.0 & 0b1_0000 != 0
+    }
+}
