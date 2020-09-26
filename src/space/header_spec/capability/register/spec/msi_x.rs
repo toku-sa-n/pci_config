@@ -5,3 +5,8 @@
 use crate::space::header_spec::bar;
 
 struct Bir(bar::Index);
+impl Bir {
+    fn new(bir: bar::Index) -> Self {
+        Self(bir)
+    }
+}
