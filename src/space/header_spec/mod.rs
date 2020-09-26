@@ -5,10 +5,22 @@
 mod bar;
 mod standard;
 
-use standard::HeaderSpecStandard;
+use {
+    super::{common::header::Header, registers::Registers},
+    standard::HeaderSpecStandard,
+};
 
 pub(crate) enum HeaderSpec {
     Standard(HeaderSpecStandard),
+}
+
+impl HeaderSpec {
+    fn parse_registers(registers: &Registers, header: Header) -> Self {
+        match header {
+            Header::Standard => Self::Standard(HeaderSpecStandard::parse_registers(registers)),
+            _ => todo!(),
+        }
+    }
 }
 
 define_field!(CapabilitiesPointer, u8, 0x0d, 0, 0xff);
