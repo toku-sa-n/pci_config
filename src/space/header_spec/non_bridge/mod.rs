@@ -52,8 +52,8 @@ impl HeaderSpecNonBridge {
 
     fn parse_bars(registers: &Registers) -> [Bar; 6] {
         let mut bars = [Bar::default(); 6];
-        for i in 0..6 {
-            bars[i] = Bar::parse_registers(registers, bar::Index::new(i));
+        for (i, bar) in bars.iter_mut().enumerate() {
+            *bar = Bar::parse_registers(registers, bar::Index::new(i));
         }
 
         bars
