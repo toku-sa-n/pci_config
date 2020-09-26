@@ -88,7 +88,7 @@ impl Function {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub(crate) struct RegisterIndex(u8);
 impl RegisterIndex {
     pub(crate) const MAX: usize = 64;
