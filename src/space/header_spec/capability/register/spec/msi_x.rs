@@ -44,6 +44,10 @@ impl PendingBitBir {
     fn new(bir: bar::Index) -> Self {
         Self(bir)
     }
+
+    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+        Self::new(bar::Index::new((registers[base + 2] & !0b111) as _))
+    }
 }
 
 struct PendingBitOffset(Size<Bytes>);
