@@ -47,6 +47,7 @@ impl Accessor {
 #[derive(Copy, Clone)]
 pub(crate) struct Bus(u8);
 impl Bus {
+    pub(crate) const MAX: u8 = 255;
     pub(crate) fn new(bus: u8) -> Self {
         Self(bus)
     }
