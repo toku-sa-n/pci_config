@@ -12,7 +12,7 @@ use {
     msi_x::TypeSpecMsiX,
 };
 
-enum TypeSpec {
+pub(crate) enum TypeSpec {
     Msi(TypeSpecMsi),
     MsiX(TypeSpecMsiX),
 }
