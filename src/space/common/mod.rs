@@ -18,6 +18,31 @@ struct Common {
     header_type: HeaderType,
     bist: Bist,
 }
+impl Common {
+    fn new(
+        id: Id,
+        command: Command,
+        status: Status,
+        interface: Interface,
+        class: Class,
+        cache_line_size: CacheLineSize,
+        latency_timer: LatencyTimer,
+        header_type: HeaderType,
+        bist: Bist,
+    ) -> Self {
+        Self {
+            id,
+            command,
+            status,
+            interface,
+            class,
+            cache_line_size,
+            latency_timer,
+            header_type,
+            bist,
+        }
+    }
+}
 
 define_field!(Command, u16, 1, 0, 0xffff);
 define_field!(Status, u16, 1, 16, 0xffff);
