@@ -7,7 +7,7 @@ use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
 };
 
-struct TypeSpecMsi {
+pub(crate) struct TypeSpecMsi {
     message_control: MessageControl,
     message_address: MessageAddress,
     message_data: MessageData,
