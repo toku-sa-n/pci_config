@@ -8,16 +8,19 @@ mod spec;
 use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
     common::Common,
+    spec::TypeSpec,
 };
 
 pub(crate) struct Register {
     common: Common,
+    spec: Option<TypeSpec>,
 }
 impl Register {
     pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
         let common = Common::parse_registers(registers, base);
+        let spec = TypeSpec::new(registers, base, &common);
 
-        Self { common }
+        Self { common, spec }
     }
 
     pub(crate) fn next_index(&self) -> RegisterIndex {
