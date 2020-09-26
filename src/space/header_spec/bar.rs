@@ -9,3 +9,6 @@ impl Bar {
         Self(bar)
     }
 }
+
+#[derive(Copy, Clone)]
+struct Index(usize);
