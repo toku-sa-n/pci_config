@@ -7,14 +7,14 @@ macro_rules! define_field {
         #[derive(Copy, Clone)]
         struct $name($ty);
         impl $name {
-            fn new(val: $ty) -> Self {
-                Self(val)
-            }
-            fn parse_registers(registers: &crate::space::registers::Registers) -> Self {
+            pub(crate) fn parse_registers(registers: &crate::space::registers::Registers) -> Self {
                 Self::new(
                     ((registers[crate::space::accessor::RegisterIndex::new($index)] >> $shift)
                         & $mask) as $ty,
                 )
+            }
+            fn new(val: $ty) -> Self {
+                Self(val)
             }
         }
     };
