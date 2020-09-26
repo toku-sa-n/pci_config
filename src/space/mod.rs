@@ -31,3 +31,12 @@ struct Space {
     common: Common,
     header_spec: HeaderSpec,
 }
+
+impl Space {
+    fn new(common: Common, header_spec: HeaderSpec) -> Self {
+        Self {
+            common,
+            header_spec,
+        }
+    }
+}
