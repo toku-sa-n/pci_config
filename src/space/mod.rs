@@ -28,7 +28,7 @@ mod registers;
 
 use {common::Common, header_spec::HeaderSpec, registers::Registers};
 
-struct Space {
+pub(crate) struct Space {
     common: Common,
     header_spec: HeaderSpec,
 }
