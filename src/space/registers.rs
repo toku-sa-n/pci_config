@@ -25,6 +25,11 @@ impl Registers {
         accessor.read()
     }
 
+    pub(crate) fn set(&self, index: RegisterIndex, value: u32) {
+        let accessor = Accessor::new(self.bus, self.device, Function::zero(), index);
+        accessor.write(value)
+    }
+
     fn exist(&self) -> bool {
         self.get(RegisterIndex::zero()) != !0
     }
