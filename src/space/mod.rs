@@ -20,7 +20,7 @@ macro_rules! define_field {
 
 pub(crate) mod accessor;
 mod common;
-mod header_spec;
+pub mod header_spec;
 pub(crate) mod registers;
 
 use {

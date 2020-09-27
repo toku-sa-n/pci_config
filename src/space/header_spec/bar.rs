@@ -4,6 +4,8 @@
 
 use crate::space::{accessor::RegisterIndex, registers::Registers};
 
+/// Base Address Registers (BAR)
+
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub(crate) struct Bar(u32);
 impl Bar {

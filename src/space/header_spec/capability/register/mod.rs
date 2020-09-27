@@ -11,6 +11,7 @@ use {
     spec::TypeSpec,
 };
 
+/// A struct representing a capability register.
 pub struct Register {
     common: Common,
     spec: Option<TypeSpec>,
