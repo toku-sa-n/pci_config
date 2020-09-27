@@ -55,16 +55,19 @@ impl<'a> MessageAddress<'a> {
     }
 }
 
+/// A struct which handles the field of message data.
 #[derive(Copy, Clone)]
 struct MessageData<'a> {
     registers: &'a Registers,
     base: RegisterIndex,
 }
 impl<'a> MessageData<'a> {
+    /// Get the value of message data.
     pub fn get(&self) -> u16 {
         (self.registers.get(self.base + 3) & 0xffff) as _
     }
 
+    /// Set the value of message data.
     pub fn set(&self, value: u16) {
         let mut data = self.registers.get(self.base + 3);
         data &= 0xffff;
