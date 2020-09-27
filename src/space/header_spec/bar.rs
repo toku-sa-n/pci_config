@@ -17,6 +17,10 @@ impl Bar {
         (self.0 & !0xf) as _
     }
 
+    fn address_64(self, upper: Self) -> u64 {
+        (upper.0 as u64) << 32 | self.address_32()
+    }
+
     fn address_length(self) -> AddressLength {
         match (self.0 >> 1) & 0b11 {
             0 => AddressLength::Bit32,
