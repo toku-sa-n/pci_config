@@ -12,12 +12,12 @@ use {
 };
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
-pub(crate) enum HeaderSpec {
-    Standard(HeaderSpecStandard),
+pub(crate) enum HeaderSpec<'a> {
+    Standard(HeaderSpecStandard<'a>),
 }
 
-impl HeaderSpec {
-    pub(crate) fn new(registers: &Registers, header: Header) -> Self {
+impl<'a> HeaderSpec<'a> {
+    pub(crate) fn new(registers: &'a Registers, header: Header) -> Self {
         match header {
             Header::Standard => Self::Standard(HeaderSpecStandard::new(registers)),
             _ => todo!(),

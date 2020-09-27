@@ -15,42 +15,24 @@ use {
     id::Id,
 };
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
-pub(crate) struct HeaderSpecStandard {
-    bars: [Bar; 6],
-    cardbus_cis_pointer: CardbusCisPointer,
-    subsystem_id: Id,
-    expansion_rom_base_address: ExpansionRomBaseAddress,
-    capabilities_pointer: Pointer,
-    interrupt_line: InterruptLine,
-    interrupt_pin: InterruptPin,
-    min_grant: MinGrant,
-    max_latency: MaxLatency,
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
+pub(crate) struct HeaderSpecStandard<'a> {
+    registers: &'a Registers,
 }
 
-impl HeaderSpecStandard {
-    pub(crate) fn new(registers: &Registers) -> Self {
-        let bars = Self::parse_bars(registers);
-        let cardbus_cis_pointer = CardbusCisPointer::new(registers);
-        let subsystem_id = Id::new(registers);
-        let expansion_rom_base_address = ExpansionRomBaseAddress::new(registers);
-        let capabilities_pointer = Pointer::new(registers);
-        let interrupt_line = InterruptLine::new(registers);
-        let interrupt_pin = InterruptPin::new(registers);
-        let min_grant = MinGrant::new(registers);
-        let max_latency = MaxLatency::new(registers);
+impl<'a> HeaderSpecStandard<'a> {
+    pub(crate) fn new(registers: &'a Registers) -> Self {
+        // let bars = Self::parse_bars(registers);
+        // let cardbus_cis_pointer = CardbusCisPointer::new(registers);
+        // let subsystem_id = Id::new(registers);
+        // let expansion_rom_base_address = ExpansionRomBaseAddress::new(registers);
+        // let capabilities_pointer = Pointer::new(registers);
+        // let interrupt_line = InterruptLine::new(registers);
+        // let interrupt_pin = InterruptPin::new(registers);
+        // let min_grant = MinGrant::new(registers);
+        // let max_latency = MaxLatency::new(registers);
 
-        Self {
-            bars,
-            cardbus_cis_pointer,
-            subsystem_id,
-            expansion_rom_base_address,
-            capabilities_pointer,
-            interrupt_line,
-            interrupt_pin,
-            min_grant,
-            max_latency,
-        }
+        Self { registers }
     }
 
     fn parse_bars(registers: &Registers) -> [Bar; 6] {
@@ -62,11 +44,12 @@ impl HeaderSpecStandard {
         bars
     }
 
-    fn iter_extended_capabilities<'a>(
-        &self,
-        registers: &'a Registers,
-    ) -> impl Iterator<Item = Register> + 'a {
-        self.capabilities_pointer.iter_registers(registers)
+    fn capabilities_pointer(&self) -> Pointer {
+        Pointer::new(self.registers)
+    }
+
+    fn iter_extended_capabilities(&self) -> impl Iterator<Item = Register> + 'a {
+        self.capabilities_pointer().iter_registers(self.registers)
     }
 }
 
