@@ -14,46 +14,28 @@ use {
 };
 
 /// The fields of PCI headers all PCI devices have.
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
-pub struct Common {
-    id: Id,
-    command: Command,
-    status: Status,
-    interface: Interface,
-    class: Class,
-    cache_line_size: CacheLineSize,
-    latency_timer: LatencyTimer,
-    header_type: HeaderType,
-    bist: Bist,
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
+pub struct Common<'a> {
+    registers: &'a Registers,
 }
-impl Common {
-    pub(crate) fn new(registers: &Registers) -> Self {
-        let id = Id::new(registers);
-        let command = Command::new(registers);
-        let status = Status::new(registers);
-        let interface = Interface::new(registers);
-        let class = Class::new(registers);
-        let cache_line_size = CacheLineSize::new(registers);
-        let latency_timer = LatencyTimer::new(registers);
-        let header_type = HeaderType::new(registers);
-        let bist = Bist::new(registers);
+impl<'a> Common<'a> {
+    pub(crate) fn new(registers: &'a Registers) -> Self {
+        // let id = Id::new(registers);
+        // let command = Command::new(registers);
+        // let status = Status::new(registers);
+        // let interface = Interface::new(registers);
+        // let class = Class::new(registers);
+        // let cache_line_size = CacheLineSize::new(registers);
+        // let latency_timer = LatencyTimer::new(registers);
+        // let header_type = HeaderType::new(registers);
+        // let bist = Bist::new(registers);
 
-        Self {
-            id,
-            command,
-            status,
-            interface,
-            class,
-            cache_line_size,
-            latency_timer,
-            header_type,
-            bist,
-        }
+        Self { registers }
     }
 
-    pub(crate) fn header_type(&self) -> Header {
-        self.header_type.ty()
-    }
+    // pub(crate) fn header_type(&self) -> Header {
+    //     self.header_type.ty()
+    // }
 }
 
 define_field!(Command, u16, 1, 0, 0xffff);
