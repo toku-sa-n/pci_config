@@ -56,9 +56,23 @@ impl<'a> MessageAddress<'a> {
 }
 
 #[derive(Copy, Clone)]
-struct MessageData(u16);
-impl MessageData {
-    fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        Self((registers.get(base + 3) & 0xffff) as _)
+struct MessageData<'a> {
+    registers: &'a Registers,
+    base: RegisterIndex,
+}
+impl<'a> MessageData<'a> {
+    pub fn get(&self) -> u16 {
+        return (self.registers.get(self.base + 3) & 0xffff) as _;
+    }
+
+    pub fn set(&self, value: u16) {
+        let mut data = self.registers.get(self.base + 3);
+        data &= 0xffff;
+        data |= value as u32;
+        self.registers.set(self.base + 3, data)
+    }
+
+    fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
+        Self { registers, base }
     }
 }
