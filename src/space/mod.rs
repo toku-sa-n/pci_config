@@ -37,6 +37,11 @@ pub struct Space {
 }
 
 impl Space {
+    /// Returns an iterator over extended capabilities.
+    ///
+    /// Returning an `Some` value means the PCI configuration space has an capability pointer.
+    /// Returning an `None` value means the PCI configuration space doesn't have capability
+    /// pointers.
     pub fn iter_extended_capabilities<'a>(&'a self) -> Option<impl Iterator<Item = Register> + 'a> {
         self.header_spec().iter_extended_capabilities()
     }
