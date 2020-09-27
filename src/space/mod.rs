@@ -61,4 +61,8 @@ impl Space {
     fn header_type(&self) -> Header {
         self.common().header_type()
     }
+
+    fn capability_pointer_exists(&self) -> bool {
+        self.common().capability_pointer_exists()
+    }
 }
