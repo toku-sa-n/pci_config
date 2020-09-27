@@ -22,6 +22,11 @@ impl<'a> TypeSpecMsiX<'a> {
         Bir::new(self.registers, self.base).as_bar_index()
     }
 
+    /// Returns an offset from the BAR specified by BIR, where a message table exists.
+    pub fn table_offset(&self) -> usize {
+        TableOffset::new(self.registers, self.base).as_usize()
+    }
+
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         Self { registers, base }
     }
@@ -44,6 +49,10 @@ impl TableOffset {
         let offset = registers.get(base + 1) & !0b111;
         assert!(offset.trailing_zeros() >= 2);
         Self(Size::new(offset as _))
+    }
+
+    fn as_usize(&self) -> usize {
+        self.0.as_usize()
     }
 }
 
