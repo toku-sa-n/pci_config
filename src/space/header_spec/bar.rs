@@ -13,6 +13,16 @@ impl Bar {
         Self(registers.get(RegisterIndex::new(4 + index.as_usize() as u8)))
     }
 
+    pub(crate) fn base_address(self, upper: Option<Self>) -> Option<u64> {
+        if self.address_length() == AddressLength::Bit32 {
+            Some(self.address_32())
+        } else if upper.is_some() {
+            Some(self.address_64(upper.unwrap()))
+        } else {
+            None
+        }
+    }
+
     fn address_32(self) -> u64 {
         (self.0 & !0xf) as _
     }
@@ -31,6 +41,7 @@ impl Bar {
     }
 }
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 enum AddressLength {
     Bit32,
     Bit64,
