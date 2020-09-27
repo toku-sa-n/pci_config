@@ -7,6 +7,7 @@ use {
     core::ops::Index,
 };
 
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub(crate) struct Registers([u32; RegisterIndex::MAX]);
 impl Registers {
     pub(crate) fn fetch(bus: Bus, device: Device) -> Option<Self> {

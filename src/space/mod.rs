@@ -28,18 +28,11 @@ use {common::Common, header_spec::HeaderSpec, registers::Registers};
 /// A struct containing information of PCI configuration space.
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub struct Space {
-    common: Common,
-    header_spec: HeaderSpec,
+    registers: Registers,
 }
 
 impl Space {
-    pub(crate) fn new(registers: &Registers) -> Self {
-        let common = Common::new(registers);
-        let header_spec = HeaderSpec::new(registers, common.header_type());
-
-        Self {
-            common,
-            header_spec,
-        }
+    pub(crate) fn new(registers: Registers) -> Self {
+        Self { registers }
     }
 }
