@@ -19,7 +19,7 @@ pub struct Register<'a> {
 }
 impl<'a> Register<'a> {
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
-        let common = Common::parse_registers(registers, base);
+        let common = Common::new(registers, base);
         let spec = TypeSpec::new(registers, base, &common);
 
         Self { common, spec }

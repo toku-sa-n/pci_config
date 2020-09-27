@@ -9,7 +9,7 @@ pub(crate) struct Common {
     next_pointer: NextPointer,
 }
 impl Common {
-    pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+    pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let id = Id::parse_registers(registers, base);
         let next_pointer = NextPointer::parse_registers(registers, base);
 
