@@ -39,7 +39,7 @@ impl<'a> Iterator for IterRegisters<'a> {
         if self.next.is_zero() {
             None
         } else {
-            let register = Register::parse_registers(self.registers, self.next);
+            let register = Register::new(self.registers, self.next);
             self.next = register.next_index();
 
             Some(register)

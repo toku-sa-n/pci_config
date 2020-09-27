@@ -18,7 +18,7 @@ pub struct Register<'a> {
     spec: Option<TypeSpec<'a>>,
 }
 impl<'a> Register<'a> {
-    pub(crate) fn parse_registers(registers: &'a Registers, base: RegisterIndex) -> Self {
+    pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         let common = Common::parse_registers(registers, base);
         let spec = TypeSpec::new(registers, base, &common);
 
