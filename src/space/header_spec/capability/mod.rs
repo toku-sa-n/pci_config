@@ -12,7 +12,10 @@ use {
 
 define_field!(Pointer, u8, 0x0d, 0, 0xfc);
 impl Pointer {
-    fn iter_registers(self, registers: &Registers) -> impl Iterator<Item = Register> + '_ {
+    pub(crate) fn iter_registers(
+        self,
+        registers: &Registers,
+    ) -> impl Iterator<Item = Register> + '_ {
         IterRegisters::new(registers, RegisterIndex::new(self.0 / 4))
     }
 }
