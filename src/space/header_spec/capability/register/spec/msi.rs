@@ -25,6 +25,7 @@ impl<'a> TypeSpecMsi<'a> {
     }
 }
 
+/// A struct which handles message address field of a capability register.
 #[derive(Copy, Clone)]
 pub struct MessageAddress(u64);
 impl MessageAddress {
