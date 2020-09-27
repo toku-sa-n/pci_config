@@ -17,13 +17,13 @@ pub struct TypeSpecMsiX<'a> {
     base: RegisterIndex,
 }
 impl<'a> TypeSpecMsiX<'a> {
-    pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
-        Self { registers, base }
-    }
-
     /// Returns a BIR value which specifies a BAR for a message table.
     pub fn bir(&self) -> bar::Index {
         Bir::new(self.registers, self.base).as_bar_index()
+    }
+
+    pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
+        Self { registers, base }
     }
 }
 
