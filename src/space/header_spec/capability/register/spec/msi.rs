@@ -15,10 +15,6 @@ pub struct TypeSpecMsi<'a> {
 }
 impl<'a> TypeSpecMsi<'a> {
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
-        // let message_control = MessageControl::new(registers, base);
-        // let message_address = MessageAddress::new(registers, base);
-        // let message_data = MessageData::new(registers, base);
-
         Self { registers, base }
     }
 }
