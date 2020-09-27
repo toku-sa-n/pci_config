@@ -4,7 +4,7 @@
 
 use {
     core::ops::Add,
-    x86_64::instructions::port::{PortReadOnly, PortWriteOnly},
+    x86_64::instructions::port::{Port, PortWriteOnly},
 };
 
 pub(crate) struct Accessor {
@@ -15,6 +15,8 @@ pub(crate) struct Accessor {
 }
 
 impl Accessor {
+    const PORT_CONFIG_ADDR: PortWriteOnly<u32> = PortWriteOnly::new(0xcf8);
+    const PORT_CONFIG_DATA: Port<u32> = Port::new(0xcfc);
     pub(crate) fn new(bus: Bus, device: Device, function: Function, index: RegisterIndex) -> Self {
         Self {
             bus,
@@ -25,14 +27,19 @@ impl Accessor {
     }
 
     pub(crate) fn read(&self) -> u32 {
-        const PORT_CONFIG_ADDR: PortWriteOnly<u32> = PortWriteOnly::new(0xcf8);
-        const PORT_CONFIG_DATA: PortReadOnly<u32> = PortReadOnly::new(0xcfc);
-
-        let mut addr = PORT_CONFIG_ADDR;
+        let mut addr = Self::PORT_CONFIG_ADDR;
         unsafe { addr.write(self.address()) }
 
-        let mut data = PORT_CONFIG_DATA;
+        let mut data = Self::PORT_CONFIG_DATA;
         unsafe { data.read() }
+    }
+
+    pub(crate) fn write(&self, value: u32) {
+        let mut addr = Self::PORT_CONFIG_ADDR;
+        unsafe { addr.write(self.address()) }
+
+        let mut data = Self::PORT_CONFIG_DATA;
+        unsafe { data.write(value) }
     }
 
     fn address(&self) -> u32 {

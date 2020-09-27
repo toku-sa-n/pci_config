@@ -19,15 +19,19 @@ impl<'a> TypeSpecMsiX<'a> {
         Self { registers, base }
     }
 
-    pub fn bir(&self) -> Bir {
-        Bir::new(self.registers, self.base)
+    pub fn bir(&self) -> bar::Index {
+        Bir::new(self.registers, self.base).as_bar_index()
     }
 }
 
-pub struct Bir(bar::Index);
+struct Bir(bar::Index);
 impl Bir {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
         Self(bar::Index::new((registers.get(base + 1) & 0b111) as _))
+    }
+
+    fn as_bar_index(self) -> bar::Index {
+        self.0
     }
 }
 
