@@ -43,7 +43,11 @@ impl Space {
     /// Returning an `None` value means the PCI configuration space doesn't have capability
     /// pointers.
     pub fn iter_extended_capabilities<'a>(&'a self) -> Option<impl Iterator<Item = Register> + 'a> {
-        self.header_spec().iter_extended_capabilities()
+        if self.capability_pointer_exists() {
+            self.header_spec().iter_extended_capabilities()
+        } else {
+            None
+        }
     }
 
     pub(crate) fn new(registers: Registers) -> Self {
