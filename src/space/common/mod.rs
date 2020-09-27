@@ -37,6 +37,10 @@ impl<'a> Common<'a> {
         let header_type = HeaderType::new(self.registers);
         header_type.ty()
     }
+
+    fn status(&self) -> Status {
+        Status::new(self.registers)
+    }
 }
 
 define_field!(Command, u16, 1, 0, 0xffff);
