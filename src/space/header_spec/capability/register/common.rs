@@ -43,6 +43,7 @@ impl Id {
     }
 }
 
+/// The type of a capability register.
 pub enum Type {
     Msi,
     MsiX,
