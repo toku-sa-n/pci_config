@@ -23,7 +23,7 @@ mod common;
 mod header_spec;
 pub(crate) mod registers;
 
-use {common::Common, header_spec::HeaderSpec, registers::Registers};
+use registers::Registers;
 
 /// A struct containing information of PCI configuration space.
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
