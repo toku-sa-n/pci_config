@@ -7,7 +7,7 @@ use crate::space::{accessor::RegisterIndex, registers::Registers};
 /// Base Address Registers (BAR)
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
-pub(crate) struct Bar(u32);
+pub struct Bar(u32);
 impl Bar {
     pub(crate) fn new(registers: &Registers, index: Index) -> Self {
         Self(registers.get(RegisterIndex::new(4 + index.as_usize() as u8)))
@@ -15,9 +15,9 @@ impl Bar {
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
-pub(crate) struct Index(usize);
+pub struct Index(usize);
 impl Index {
-    pub(crate) fn new(index: usize) -> Self {
+    pub fn new(index: usize) -> Self {
         assert!(index < 6);
         Self(index)
     }
