@@ -11,8 +11,7 @@ pub(crate) struct Common {
     next_pointer: NextPointer,
 }
 impl Common {
-    /// Returns the type of this capability register.
-    pub fn ty(&self) -> Result<Type, Error> {
+    pub(crate) fn ty(&self) -> Result<Type, Error> {
         self.id.ty()
     }
 
