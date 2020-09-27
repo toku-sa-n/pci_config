@@ -15,7 +15,7 @@ pub(crate) struct TypeSpecMsi {
 impl TypeSpecMsi {
     pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let message_control = MessageControl::parse_registers(registers, base);
-        let message_address = MessageAddress::parse_registers(registers, base);
+        let message_address = MessageAddress::new(registers, base);
         let message_data = MessageData::new(registers, base);
 
         Self {
@@ -29,15 +29,11 @@ impl TypeSpecMsi {
 #[derive(Copy, Clone)]
 struct MessageAddress(u64);
 impl MessageAddress {
-    fn new(address: u64) -> Self {
-        Self(address)
-    }
-
-    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+    fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let lower = registers[base + 1] as u64;
         let upper = registers[base + 2] as u64;
 
-        Self::new(upper << 32 | lower)
+        Self(upper << 32 | lower)
     }
 }
 
