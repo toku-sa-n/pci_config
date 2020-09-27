@@ -8,7 +8,7 @@ pub mod spec;
 
 use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
-    common::Common,
+    common::{Common, Error, Type},
     spec::TypeSpec,
 };
 
@@ -18,6 +18,11 @@ pub struct Register<'a> {
     spec: Option<TypeSpec<'a>>,
 }
 impl<'a> Register<'a> {
+    /// Returns the type of this capability register.
+    pub fn ty(&self) -> Result<Type, Error> {
+        self.common.ty()
+    }
+
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         let common = Common::new(registers, base);
         let spec = TypeSpec::new(registers, base, &common);
