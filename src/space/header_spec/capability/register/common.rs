@@ -71,6 +71,6 @@ impl NextPointer {
 pub enum Error {
     /// Currently this type of capability registers are not supported by this crate.
     NotYetSupported(u8),
-    /// The ID is reserved.
+    /// This ID is reserved.
     ReservedId(u8),
 }
