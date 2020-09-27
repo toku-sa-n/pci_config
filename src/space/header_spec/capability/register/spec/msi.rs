@@ -33,7 +33,8 @@ pub struct MessageAddress<'a> {
 }
 
 impl<'a> MessageAddress<'a> {
-    fn get(&self) -> u64 {
+    /// Get the value of message address.
+    pub fn get(&self) -> u64 {
         let lower = self.registers.get(self.base + 1) as u64;
         let upper = self.registers.get(self.base + 2) as u64;
 
