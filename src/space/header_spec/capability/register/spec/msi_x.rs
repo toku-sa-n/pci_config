@@ -30,7 +30,7 @@ impl Bir {
         Self(bar::Index::new((registers.get(base + 1) & 0b111) as _))
     }
 
-    fn as_bar_index(self) -> bar::Index {
+    fn as_bar_index(&self) -> bar::Index {
         self.0
     }
 }
