@@ -62,3 +62,8 @@ impl NextPointer {
         self.0
     }
 }
+
+pub enum Error {
+    NotYetSupported(u8),
+    ReservedId(u8),
+}
