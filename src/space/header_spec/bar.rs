@@ -13,6 +13,10 @@ impl Bar {
         Self(registers.get(RegisterIndex::new(4 + index.as_usize() as u8)))
     }
 
+    fn address_32(self) -> u64 {
+        (self.0 & !0xf) as _
+    }
+
     fn address_length(self) -> AddressLength {
         match (self.0 >> 1) & 0b11 {
             0 => AddressLength::Bit32,
