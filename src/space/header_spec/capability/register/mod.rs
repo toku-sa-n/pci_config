@@ -11,7 +11,7 @@ use {
     spec::TypeSpec,
 };
 
-pub(crate) struct Register {
+pub struct Register {
     common: Common,
     spec: Option<TypeSpec>,
 }

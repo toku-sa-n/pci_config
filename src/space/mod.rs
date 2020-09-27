@@ -23,7 +23,12 @@ mod common;
 mod header_spec;
 pub(crate) mod registers;
 
-use {common::Common, registers::Registers};
+use {
+    common::{header::Header, Common},
+    header_spec::capability::register::Register,
+    header_spec::HeaderSpec,
+    registers::Registers,
+};
 
 /// A struct containing information of PCI configuration space.
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
@@ -32,11 +37,23 @@ pub struct Space {
 }
 
 impl Space {
+    pub fn iter_extended_capabilities<'a>(&'a self) -> Option<impl Iterator<Item = Register> + 'a> {
+        self.header_spec().iter_extended_capabilities()
+    }
+
     pub(crate) fn new(registers: Registers) -> Self {
         Self { registers }
     }
 
     fn common(&self) -> Common {
         Common::new(&self.registers)
+    }
+
+    fn header_spec(&self) -> HeaderSpec {
+        HeaderSpec::new(&self.registers, self.header_type())
+    }
+
+    fn header_type(&self) -> Header {
+        self.common().header_type()
     }
 }

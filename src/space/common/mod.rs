@@ -33,9 +33,10 @@ impl<'a> Common<'a> {
         Self { registers }
     }
 
-    // pub(crate) fn header_type(&self) -> Header {
-    //     self.header_type.ty()
-    // }
+    pub(crate) fn header_type(&self) -> Header {
+        let header_type = HeaderType::new(self.registers);
+        header_type.ty()
+    }
 }
 
 define_field!(Command, u16, 1, 0, 0xffff);

@@ -8,6 +8,7 @@ mod standard;
 
 use {
     super::{common::header::Header, registers::Registers},
+    crate::space::header_spec::capability::register::Register,
     standard::HeaderSpecStandard,
 };
 
@@ -17,6 +18,13 @@ pub(crate) enum HeaderSpec<'a> {
 }
 
 impl<'a> HeaderSpec<'a> {
+    pub fn iter_extended_capabilities(&self) -> Option<impl Iterator<Item = Register> + 'a> {
+        match self {
+            Self::Standard(standard) => Some(standard.iter_extended_capabilities()),
+            _ => None,
+        }
+    }
+
     pub(crate) fn new(registers: &'a Registers, header: Header) -> Self {
         match header {
             Header::Standard => Self::Standard(HeaderSpecStandard::new(registers)),
