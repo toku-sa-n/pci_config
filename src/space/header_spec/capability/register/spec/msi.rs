@@ -7,22 +7,17 @@ use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
 };
 
-pub(crate) struct TypeSpecMsi {
-    message_control: MessageControl,
-    message_address: MessageAddress,
-    message_data: MessageData,
+pub(crate) struct TypeSpecMsi<'a> {
+    registers: &'a Registers,
+    base: RegisterIndex,
 }
-impl TypeSpecMsi {
-    pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let message_control = MessageControl::new(registers, base);
-        let message_address = MessageAddress::new(registers, base);
-        let message_data = MessageData::new(registers, base);
+impl<'a> TypeSpecMsi<'a> {
+    pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
+        // let message_control = MessageControl::new(registers, base);
+        // let message_address = MessageAddress::new(registers, base);
+        // let message_data = MessageData::new(registers, base);
 
-        Self {
-            message_control,
-            message_address,
-            message_data,
-        }
+        Self { registers, base }
     }
 }
 

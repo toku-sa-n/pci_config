@@ -13,7 +13,7 @@ use {
 };
 
 pub(crate) enum TypeSpec<'a> {
-    Msi(TypeSpecMsi),
+    Msi(TypeSpecMsi<'a>),
     MsiX(TypeSpecMsiX<'a>),
 }
 impl<'a> TypeSpec<'a> {
