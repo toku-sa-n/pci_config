@@ -13,24 +13,16 @@ pub(crate) struct TypeSpecMsi {
     message_data: MessageData,
 }
 impl TypeSpecMsi {
-    fn new(
-        message_control: MessageControl,
-        message_address: MessageAddress,
-        message_data: MessageData,
-    ) -> Self {
+    pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
+        let message_control = MessageControl::parse_registers(registers, base);
+        let message_address = MessageAddress::parse_registers(registers, base);
+        let message_data = MessageData::parse_registers(registers, base);
+
         Self {
             message_control,
             message_address,
             message_data,
         }
-    }
-
-    pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        let control = MessageControl::parse_registers(registers, base);
-        let address = MessageAddress::parse_registers(registers, base);
-        let data = MessageData::parse_registers(registers, base);
-
-        Self::new(control, address, data)
     }
 }
 
