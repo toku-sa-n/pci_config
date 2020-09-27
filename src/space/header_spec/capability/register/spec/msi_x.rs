@@ -14,12 +14,6 @@ pub(crate) struct TypeSpecMsiX<'a> {
 }
 impl<'a> TypeSpecMsiX<'a> {
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
-        // let message_control = MessageControl::new(registers, base);
-        // let bir = Bir::new(registers, base);
-        // let table_offset = TableOffset::new(registers, base);
-        // let pending_bit_bir = PendingBitBir::new(registers, base);
-        // let pending_bit_offset = PendingBitOffset::new(registers, base);
-
         Self { registers, base }
     }
 }
