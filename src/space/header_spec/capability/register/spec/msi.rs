@@ -27,13 +27,21 @@ impl<'a> TypeSpecMsi<'a> {
 
 /// A struct which handles message address field of a capability register.
 #[derive(Copy, Clone)]
-pub struct MessageAddress(u64);
-impl MessageAddress {
-    fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let lower = registers.get(base + 1) as u64;
-        let upper = registers.get(base + 2) as u64;
+pub struct MessageAddress<'a> {
+    registers: &'a Registers,
+    base: RegisterIndex,
+}
 
-        Self(upper << 32 | lower)
+impl<'a> MessageAddress<'a> {
+    fn get(&self) -> u64 {
+        let lower = self.registers.get(self.base + 1) as u64;
+        let upper = self.registers.get(self.base + 2) as u64;
+
+        upper << 32 | lower
+    }
+
+    fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
+        Self { registers, base }
     }
 }
 
