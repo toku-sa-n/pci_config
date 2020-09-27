@@ -7,6 +7,7 @@ mod id;
 use {
     super::{
         bar::{self, Bar},
+        capability::register::Register,
         capability::Pointer,
         InterruptLine, InterruptPin,
     },
@@ -59,6 +60,13 @@ impl HeaderSpecStandard {
         }
 
         bars
+    }
+
+    fn iter_extended_capabilities<'a>(
+        &self,
+        registers: &'a Registers,
+    ) -> impl Iterator<Item = Register> + 'a {
+        self.capabilities_pointer.iter_registers(registers)
     }
 }
 
