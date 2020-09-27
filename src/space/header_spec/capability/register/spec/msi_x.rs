@@ -16,7 +16,7 @@ pub(crate) struct TypeSpecMsiX {
     pending_bit_offset: PendingBitOffset,
 }
 impl TypeSpecMsiX {
-    pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+    pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let message_control = MessageControl::new(registers, base);
         let bir = Bir::parse_registers(registers, base);
         let table_offset = TableOffset::parse_registers(registers, base);

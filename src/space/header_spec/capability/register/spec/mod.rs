@@ -22,7 +22,7 @@ impl TypeSpec {
             None => None,
             Some(ty) => Some(match ty {
                 Type::Msi => Self::Msi(TypeSpecMsi::new(registers, base)),
-                Type::MsiX => Self::MsiX(TypeSpecMsiX::parse_registers(registers, base)),
+                Type::MsiX => Self::MsiX(TypeSpecMsiX::new(registers, base)),
             }),
         }
     }
