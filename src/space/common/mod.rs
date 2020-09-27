@@ -38,6 +38,10 @@ impl<'a> Common<'a> {
         header_type.ty()
     }
 
+    pub(crate) fn capability_pointer_exists(&self) -> bool {
+        self.status().capability_pointer_exists()
+    }
+
     fn status(&self) -> Status {
         Status::new(self.registers)
     }
