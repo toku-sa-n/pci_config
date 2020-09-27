@@ -20,6 +20,11 @@ impl<'a> TypeSpecMsi<'a> {
         MessageAddress::new(self.registers, self.base)
     }
 
+    /// Returns a struct which handles message data field of a capability register.
+    pub fn message_data(&self) -> MessageData {
+        MessageData::new(self.registers, self.base)
+    }
+
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         Self { registers, base }
     }
@@ -57,7 +62,7 @@ impl<'a> MessageAddress<'a> {
 
 /// A struct which handles the field of message data.
 #[derive(Copy, Clone)]
-struct MessageData<'a> {
+pub struct MessageData<'a> {
     registers: &'a Registers,
     base: RegisterIndex,
 }
