@@ -2,8 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+//! Fields which all capability registers have.
 use crate::space::{accessor::RegisterIndex, registers::Registers};
 
+/// A structure providing information values which all capability registers have.
 pub(crate) struct Common {
     id: Id,
     next_pointer: NextPointer,
