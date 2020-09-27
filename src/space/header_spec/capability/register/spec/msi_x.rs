@@ -21,6 +21,7 @@ impl<'a> TypeSpecMsiX<'a> {
         Self { registers, base }
     }
 
+    /// Returns a BIR value which specifies a BAR for a message table.
     pub fn bir(&self) -> bar::Index {
         Bir::new(self.registers, self.base).as_bar_index()
     }
