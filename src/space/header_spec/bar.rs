@@ -14,6 +14,11 @@ impl Bar {
     }
 }
 
+enum AddressLength {
+    Bit32,
+    Bit64,
+}
+
 /// A structure used to specify which BAR to use.
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug, Default)]
 pub struct Index(usize);
