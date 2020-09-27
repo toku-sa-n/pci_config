@@ -10,7 +10,7 @@ use crate::space::{accessor::RegisterIndex, registers::Registers};
 pub(crate) struct Bar(u32);
 impl Bar {
     pub(crate) fn new(registers: &Registers, index: Index) -> Self {
-        Self(registers[RegisterIndex::new(4 + index.as_usize() as u8)])
+        Self(registers.get(RegisterIndex::new(4 + index.as_usize() as u8)))
     }
 }
 

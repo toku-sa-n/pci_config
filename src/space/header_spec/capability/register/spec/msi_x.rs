@@ -27,14 +27,14 @@ impl<'a> TypeSpecMsiX<'a> {
 struct Bir(bar::Index);
 impl Bir {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        Self(bar::Index::new((registers[base + 1] & 0b111) as _))
+        Self(bar::Index::new((registers.get(base + 1) & 0b111) as _))
     }
 }
 
 struct TableOffset(Size<Bytes>);
 impl TableOffset {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let offset = registers[base + 1] & !0b111;
+        let offset = registers.get(base + 1) & !0b111;
         assert!(offset.trailing_zeros() >= 2);
         Self(Size::new(offset as _))
     }
@@ -43,14 +43,14 @@ impl TableOffset {
 struct PendingBitBir(bar::Index);
 impl PendingBitBir {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        Self(bar::Index::new((registers[base + 2] & !0b111) as _))
+        Self(bar::Index::new((registers.get(base + 2) & !0b111) as _))
     }
 }
 
 struct PendingBitOffset(Size<Bytes>);
 impl PendingBitOffset {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let offset = registers[base + 2] & !0b111;
+        let offset = registers.get(base + 2) & !0b111;
         assert!(offset.trailing_zeros() >= 2);
         Self(Size::new(offset as _))
     }

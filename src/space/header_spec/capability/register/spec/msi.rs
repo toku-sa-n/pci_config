@@ -25,8 +25,8 @@ impl<'a> TypeSpecMsi<'a> {
 struct MessageAddress(u64);
 impl MessageAddress {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let lower = registers[base + 1] as u64;
-        let upper = registers[base + 2] as u64;
+        let lower = registers.get(base + 1) as u64;
+        let upper = registers.get(base + 2) as u64;
 
         Self(upper << 32 | lower)
     }
@@ -36,6 +36,6 @@ impl MessageAddress {
 struct MessageData(u16);
 impl MessageData {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        Self((registers[base + 3] & 0xffff) as _)
+        Self((registers.get(base + 3) & 0xffff) as _)
     }
 }

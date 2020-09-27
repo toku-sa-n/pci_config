@@ -29,7 +29,7 @@ impl Common {
 struct Id(u8);
 impl Id {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        Self((registers[base] & 0xff) as u8)
+        Self((registers.get(base) & 0xff) as u8)
     }
 
     fn ty(self) -> Option<Type> {
@@ -50,7 +50,9 @@ pub(crate) enum Type {
 struct NextPointer(RegisterIndex);
 impl NextPointer {
     fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        Self(RegisterIndex::new(((registers[base] >> 8) & 0xff) as u8))
+        Self(RegisterIndex::new(
+            ((registers.get(base) >> 8) & 0xff) as u8,
+        ))
     }
 
     fn as_register_index(&self) -> RegisterIndex {

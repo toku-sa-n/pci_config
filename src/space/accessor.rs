@@ -47,7 +47,7 @@ impl Accessor {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub(crate) struct Bus(u8);
 impl Bus {
     pub(crate) const MAX: usize = 256;
@@ -60,7 +60,7 @@ impl Bus {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub(crate) struct Device(u8);
 impl Device {
     pub(crate) const MAX: u8 = 32;

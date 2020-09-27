@@ -36,6 +36,6 @@ impl<'a> TypeSpec<'a> {
 struct MessageControl(u16);
 impl MessageControl {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        Self(((registers[base] >> 16) & 0xffff) as _)
+        Self(((registers.get(base) >> 16) & 0xffff) as _)
     }
 }

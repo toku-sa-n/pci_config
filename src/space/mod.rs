@@ -10,7 +10,7 @@ macro_rules! define_field {
         impl $name {
             pub(crate) fn new(registers: &crate::space::registers::Registers) -> Self {
                 Self(
-                    ((registers[crate::space::accessor::RegisterIndex::new($index)] >> $shift)
+                    ((registers.get(crate::space::accessor::RegisterIndex::new($index)) >> $shift)
                         & $mask) as $ty,
                 )
             }
