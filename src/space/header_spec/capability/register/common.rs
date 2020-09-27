@@ -11,6 +11,11 @@ pub(crate) struct Common {
     next_pointer: NextPointer,
 }
 impl Common {
+    /// Returns the type of this capability register.
+    pub fn ty(&self) -> Result<Type, Error> {
+        self.id.ty()
+    }
+
     pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let id = Id::parse_registers(registers, base);
         let next_pointer = NextPointer::parse_registers(registers, base);
@@ -20,10 +25,6 @@ impl Common {
 
     pub(crate) fn next_index(&self) -> RegisterIndex {
         self.next_pointer.as_register_index()
-    }
-
-    pub(crate) fn ty(&self) -> Result<Type, Error> {
-        self.id.ty()
     }
 }
 
@@ -44,7 +45,7 @@ impl Id {
     }
 }
 
-/// The type of a capability register.
+/// The type of a capability register which is currently supported by this crate.
 pub enum Type {
     Msi,
     MsiX,
@@ -64,7 +65,12 @@ impl NextPointer {
     }
 }
 
+/// An enum representing errors.
+///
+/// Each enum variant has an ID of a capability register.
 pub enum Error {
+    /// Currently this type of capability registers are not supported by this crate.
     NotYetSupported(u8),
+    /// The ID is reserved.
     ReservedId(u8),
 }
