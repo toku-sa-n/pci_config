@@ -62,7 +62,7 @@ struct MessageData<'a> {
 }
 impl<'a> MessageData<'a> {
     pub fn get(&self) -> u16 {
-        return (self.registers.get(self.base + 3) & 0xffff) as _;
+        (self.registers.get(self.base + 3) & 0xffff) as _
     }
 
     pub fn set(&self, value: u16) {
