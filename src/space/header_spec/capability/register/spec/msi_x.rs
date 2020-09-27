@@ -20,7 +20,7 @@ impl TypeSpecMsiX {
         let message_control = MessageControl::new(registers, base);
         let bir = Bir::new(registers, base);
         let table_offset = TableOffset::new(registers, base);
-        let pending_bit_bir = PendingBitBir::parse_registers(registers, base);
+        let pending_bit_bir = PendingBitBir::new(registers, base);
         let pending_bit_offset = PendingBitOffset::parse_registers(registers, base);
 
         Self {
@@ -51,12 +51,8 @@ impl TableOffset {
 
 struct PendingBitBir(bar::Index);
 impl PendingBitBir {
-    fn new(bir: bar::Index) -> Self {
-        Self(bir)
-    }
-
-    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        Self::new(bar::Index::new((registers[base + 2] & !0b111) as _))
+    fn new(registers: &Registers, base: RegisterIndex) -> Self {
+        Self(bar::Index::new((registers[base + 2] & !0b111) as _))
     }
 }
 
