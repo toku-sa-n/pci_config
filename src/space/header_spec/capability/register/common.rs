@@ -22,7 +22,7 @@ impl Common {
         self.next_pointer.as_register_index()
     }
 
-    pub(crate) fn ty(&self) -> Option<Type> {
+    pub(crate) fn ty(&self) -> Result<Type, Error> {
         self.id.ty()
     }
 }
@@ -34,11 +34,12 @@ impl Id {
         Self((registers.get(base) & 0xff) as u8)
     }
 
-    fn ty(self) -> Option<Type> {
+    fn ty(self) -> Result<Type, Error> {
         match self.0 {
-            0x05 => Some(Type::Msi),
-            0x11 => Some(Type::MsiX),
-            _ => None,
+            0x05 => Ok(Type::Msi),
+            0x11 => Ok(Type::MsiX),
+            e if e <= 0x15 => Err(Error::NotYetSupported(self.0)),
+            _ => Err(Error::ReservedId(self.0)),
         }
     }
 }

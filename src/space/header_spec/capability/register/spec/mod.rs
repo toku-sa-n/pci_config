@@ -23,8 +23,8 @@ impl<'a> TypeSpec<'a> {
         common: &Common,
     ) -> Option<Self> {
         match common.ty() {
-            None => None,
-            Some(ty) => Some(match ty {
+            Err(_) => None,
+            Ok(ty) => Some(match ty {
                 Type::Msi => Self::Msi(TypeSpecMsi::new(registers, base)),
                 Type::MsiX => Self::MsiX(TypeSpecMsiX::new(registers, base)),
             }),
