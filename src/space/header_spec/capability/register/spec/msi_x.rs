@@ -9,6 +9,7 @@ use {
     os_units::{Bytes, Size},
 };
 
+/// A structure which handles MSI-X specific fields.
 pub struct TypeSpecMsiX<'a> {
     registers: &'a Registers,
     base: RegisterIndex,
