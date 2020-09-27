@@ -41,6 +41,15 @@ impl<'a> MessageAddress<'a> {
         upper << 32 | lower
     }
 
+    /// Set the value of message address.
+    pub fn set(&self, value: u64) {
+        let lower = (value & 0xffff_ffff) as u32;
+        let upper = (value >> 32) as u32;
+
+        self.registers.set(self.base + 1, lower);
+        self.registers.set(self.base + 2, upper);
+    }
+
     fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         Self { registers, base }
     }
