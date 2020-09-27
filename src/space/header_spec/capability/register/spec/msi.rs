@@ -15,13 +15,18 @@ pub struct TypeSpecMsi<'a> {
     base: RegisterIndex,
 }
 impl<'a> TypeSpecMsi<'a> {
+    /// Returns a struct which handles message address field of a capability register.
+    pub fn message_address(&self) -> MessageAddress {
+        MessageAddress::new(self.registers, self.base)
+    }
+
     pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
         Self { registers, base }
     }
 }
 
 #[derive(Copy, Clone)]
-struct MessageAddress(u64);
+pub struct MessageAddress(u64);
 impl MessageAddress {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let lower = registers.get(base + 1) as u64;
