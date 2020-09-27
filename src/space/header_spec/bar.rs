@@ -12,6 +12,15 @@ impl Bar {
     pub(crate) fn new(registers: &Registers, index: Index) -> Self {
         Self(registers.get(RegisterIndex::new(4 + index.as_usize() as u8)))
     }
+
+    fn address_length(self) -> AddressLength {
+        match (self.0 >> 1) & 0b11 {
+            0 => AddressLength::Bit32,
+            2 => AddressLength::Bit64,
+            1 => unimplemented!(),
+            _ => unreachable!(),
+        }
+    }
 }
 
 enum AddressLength {
