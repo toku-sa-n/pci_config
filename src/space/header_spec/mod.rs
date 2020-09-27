@@ -2,6 +2,10 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+//! Header type specific fields.
+//!
+//! There are 3 header types: Standard, PCI-to-PCI bridge, and PCI-to-CardBus bridge.
+
 pub mod bar;
 pub mod capability;
 mod standard;
