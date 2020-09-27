@@ -33,7 +33,7 @@ impl<'a> IterRegisters<'a> {
     }
 }
 impl<'a> Iterator for IterRegisters<'a> {
-    type Item = Register;
+    type Item = Register<'a>;
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.next.is_zero() {

@@ -48,7 +48,7 @@ impl<'a> HeaderSpecStandard<'a> {
         Pointer::new(self.registers)
     }
 
-    pub fn iter_extended_capabilities(&self) -> impl Iterator<Item = Register> + 'a {
+    pub fn iter_extended_capabilities(&self) -> impl Iterator<Item = Register<'a>> + 'a {
         self.capabilities_pointer().iter_registers(self.registers)
     }
 }

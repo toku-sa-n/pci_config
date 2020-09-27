@@ -12,12 +12,12 @@ use {
 };
 
 /// A struct representing a capability register.
-pub struct Register {
+pub struct Register<'a> {
     common: Common,
-    spec: Option<TypeSpec>,
+    spec: Option<TypeSpec<'a>>,
 }
-impl Register {
-    pub(crate) fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
+impl<'a> Register<'a> {
+    pub(crate) fn parse_registers(registers: &'a Registers, base: RegisterIndex) -> Self {
         let common = Common::parse_registers(registers, base);
         let spec = TypeSpec::new(registers, base, &common);
 

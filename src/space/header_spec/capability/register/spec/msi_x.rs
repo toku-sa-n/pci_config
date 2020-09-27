@@ -8,28 +8,19 @@ use {
     os_units::{Bytes, Size},
 };
 
-pub(crate) struct TypeSpecMsiX {
-    message_control: MessageControl,
-    bir: Bir,
-    table_offset: TableOffset,
-    pending_bit_bir: PendingBitBir,
-    pending_bit_offset: PendingBitOffset,
+pub(crate) struct TypeSpecMsiX<'a> {
+    registers: &'a Registers,
+    base: RegisterIndex,
 }
-impl TypeSpecMsiX {
-    pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let message_control = MessageControl::new(registers, base);
-        let bir = Bir::new(registers, base);
-        let table_offset = TableOffset::new(registers, base);
-        let pending_bit_bir = PendingBitBir::new(registers, base);
-        let pending_bit_offset = PendingBitOffset::new(registers, base);
+impl<'a> TypeSpecMsiX<'a> {
+    pub(crate) fn new(registers: &'a Registers, base: RegisterIndex) -> Self {
+        // let message_control = MessageControl::new(registers, base);
+        // let bir = Bir::new(registers, base);
+        // let table_offset = TableOffset::new(registers, base);
+        // let pending_bit_bir = PendingBitBir::new(registers, base);
+        // let pending_bit_offset = PendingBitOffset::new(registers, base);
 
-        Self {
-            message_control,
-            bir,
-            table_offset,
-            pending_bit_bir,
-            pending_bit_offset,
-        }
+        Self { registers, base }
     }
 }
 

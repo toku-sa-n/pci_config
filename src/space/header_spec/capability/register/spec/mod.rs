@@ -12,12 +12,16 @@ use {
     msi_x::TypeSpecMsiX,
 };
 
-pub(crate) enum TypeSpec {
+pub(crate) enum TypeSpec<'a> {
     Msi(TypeSpecMsi),
-    MsiX(TypeSpecMsiX),
+    MsiX(TypeSpecMsiX<'a>),
 }
-impl TypeSpec {
-    pub(crate) fn new(registers: &Registers, base: RegisterIndex, common: &Common) -> Option<Self> {
+impl<'a> TypeSpec<'a> {
+    pub(crate) fn new(
+        registers: &'a Registers,
+        base: RegisterIndex,
+        common: &Common,
+    ) -> Option<Self> {
         match common.ty() {
             None => None,
             Some(ty) => Some(match ty {
