@@ -31,11 +31,7 @@ impl TypeSpec {
 #[derive(Copy, Clone)]
 struct MessageControl(u16);
 impl MessageControl {
-    fn new(control: u16) -> Self {
-        Self(control)
-    }
-
-    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        Self::new(((registers[base] >> 16) & 0xffff) as _)
+    fn new(registers: &Registers, base: RegisterIndex) -> Self {
+        Self(((registers[base] >> 16) & 0xffff) as _)
     }
 }

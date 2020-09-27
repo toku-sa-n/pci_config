@@ -14,7 +14,7 @@ pub(crate) struct TypeSpecMsi {
 }
 impl TypeSpecMsi {
     pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
-        let message_control = MessageControl::parse_registers(registers, base);
+        let message_control = MessageControl::new(registers, base);
         let message_address = MessageAddress::new(registers, base);
         let message_data = MessageData::new(registers, base);
 
