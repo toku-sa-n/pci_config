@@ -9,7 +9,7 @@ use {
     os_units::{Bytes, Size},
 };
 
-pub(crate) struct TypeSpecMsiX<'a> {
+pub struct TypeSpecMsiX<'a> {
     registers: &'a Registers,
     base: RegisterIndex,
 }
