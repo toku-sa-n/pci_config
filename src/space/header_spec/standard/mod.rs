@@ -22,16 +22,6 @@ pub(crate) struct HeaderSpecStandard<'a> {
 
 impl<'a> HeaderSpecStandard<'a> {
     pub(crate) fn new(registers: &'a Registers) -> Self {
-        // let bars = Self::parse_bars(registers);
-        // let cardbus_cis_pointer = CardbusCisPointer::new(registers);
-        // let subsystem_id = Id::new(registers);
-        // let expansion_rom_base_address = ExpansionRomBaseAddress::new(registers);
-        // let capabilities_pointer = Pointer::new(registers);
-        // let interrupt_line = InterruptLine::new(registers);
-        // let interrupt_pin = InterruptPin::new(registers);
-        // let min_grant = MinGrant::new(registers);
-        // let max_latency = MaxLatency::new(registers);
-
         Self { registers }
     }
 
