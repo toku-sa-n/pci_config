@@ -3,7 +3,7 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 mod bar;
-mod capability;
+pub(crate) mod capability;
 mod standard;
 
 use {
