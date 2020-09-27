@@ -18,7 +18,7 @@ pub(crate) enum HeaderSpec<'a> {
 }
 
 impl<'a> HeaderSpec<'a> {
-    pub fn iter_extended_capabilities(&self) -> Option<impl Iterator<Item = Register> + 'a> {
+    pub(crate) fn iter_extended_capabilities(&self) -> Option<impl Iterator<Item = Register> + 'a> {
         match self {
             Self::Standard(standard) => Some(standard.iter_extended_capabilities()),
             _ => None,
