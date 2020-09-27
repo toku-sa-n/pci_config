@@ -18,7 +18,7 @@ pub(crate) struct TypeSpecMsiX {
 impl TypeSpecMsiX {
     pub(crate) fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let message_control = MessageControl::new(registers, base);
-        let bir = Bir::parse_registers(registers, base);
+        let bir = Bir::new(registers, base);
         let table_offset = TableOffset::parse_registers(registers, base);
         let pending_bit_bir = PendingBitBir::parse_registers(registers, base);
         let pending_bit_offset = PendingBitOffset::parse_registers(registers, base);
@@ -35,12 +35,8 @@ impl TypeSpecMsiX {
 
 struct Bir(bar::Index);
 impl Bir {
-    fn new(bir: bar::Index) -> Self {
-        Self(bir)
-    }
-
-    fn parse_registers(registers: &Registers, base: RegisterIndex) -> Self {
-        Self::new(bar::Index::new((registers[base + 1] & 0b111) as _))
+    fn new(registers: &Registers, base: RegisterIndex) -> Self {
+        Self(bar::Index::new((registers[base + 1] & 0b111) as _))
     }
 }
 
