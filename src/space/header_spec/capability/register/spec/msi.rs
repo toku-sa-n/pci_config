@@ -9,6 +9,7 @@ use {
     crate::space::{accessor::RegisterIndex, registers::Registers},
 };
 
+/// A struct which handles MSI-specific fields of a capability register.
 pub struct TypeSpecMsi<'a> {
     registers: &'a Registers,
     base: RegisterIndex,
