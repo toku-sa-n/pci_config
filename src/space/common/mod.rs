@@ -20,16 +20,6 @@ pub struct Common<'a> {
 }
 impl<'a> Common<'a> {
     pub(crate) fn new(registers: &'a Registers) -> Self {
-        // let id = Id::new(registers);
-        // let command = Command::new(registers);
-        // let status = Status::new(registers);
-        // let interface = Interface::new(registers);
-        // let class = Class::new(registers);
-        // let cache_line_size = CacheLineSize::new(registers);
-        // let latency_timer = LatencyTimer::new(registers);
-        // let header_type = HeaderType::new(registers);
-        // let bist = Bist::new(registers);
-
         Self { registers }
     }
 
