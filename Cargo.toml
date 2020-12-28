@@ -9,4 +9,4 @@ name = "pci_config"
 
 [dependencies]
 x86_64 = "0.12.1"
-os_units = "0.1.2"
+os_units = "0.2.6"
