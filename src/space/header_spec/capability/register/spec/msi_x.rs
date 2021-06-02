@@ -8,7 +8,7 @@
 use {
     super::MessageControl,
     crate::space::{accessor::RegisterIndex, header_spec::bar, registers::Registers},
-    os_units::{Bytes, Size},
+    os_units::Bytes,
 };
 
 /// A structure which handles MSI-X specific fields.
@@ -43,12 +43,12 @@ impl Bir {
     }
 }
 
-struct TableOffset(Size<Bytes>);
+struct TableOffset(Bytes);
 impl TableOffset {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let offset = registers.get(base + 1) & !0b111;
         assert!(offset.trailing_zeros() >= 2);
-        Self(Size::new(offset as _))
+        Self(Bytes::new(offset as _))
     }
 
     fn as_usize(&self) -> usize {
@@ -63,11 +63,11 @@ impl PendingBitBir {
     }
 }
 
-struct PendingBitOffset(Size<Bytes>);
+struct PendingBitOffset(Bytes);
 impl PendingBitOffset {
     fn new(registers: &Registers, base: RegisterIndex) -> Self {
         let offset = registers.get(base + 2) & !0b111;
         assert!(offset.trailing_zeros() >= 2);
-        Self(Size::new(offset as _))
+        Self(Bytes::new(offset as _))
     }
 }
