@@ -1,7 +1,3 @@
-// This Source Code Form is subject to the terms of the Mozilla Public
-// License, v. 2.0. If a copy of the MPL was not distributed with this
-// file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 //! A module which defines types for representing PCI configuration space.
 macro_rules! define_field {
     ($name:ident,$ty:ty,$index:expr,$shift:expr,$mask:expr) => {
