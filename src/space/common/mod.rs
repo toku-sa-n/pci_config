@@ -1,4 +1,7 @@
 use bit_field::BitField;
+use core::convert::TryInto;
+use num_derive::FromPrimitive;
+use num_traits::FromPrimitive;
 
 mod class;
 pub(crate) mod header;
@@ -73,16 +76,30 @@ impl Status {
         self.0.get_bit(8)
     }
 
+    /// Returns the `DEVSEL` timing.
+    pub fn devsel_timing(self) -> DevselTiming {
+        let v = self.0.get_bits(9..=10);
+        let v = FromPrimitive::from_u16(v);
+        v.expect("The value represents Reserved.")
+    }
+
     /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
     pub fn parity_error_detected(self) -> bool {
         self.0.get_bit(15)
     }
 }
 
-#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
 pub enum RunningMHz {
     /// The device can run at 66 MHz.
     At66MHz,
     /// The device can run at 33 MHz.
     At33MHz,
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, FromPrimitive)]
+pub enum DevselTiming {
+    Fast = 0b00,
+    Medium = 0b01,
+    Slow = 0b10,
 }
