@@ -62,6 +62,17 @@ impl Status {
         self.0.get_bit(7)
     }
 
+    /// Returns [`true`] if the following conditions are met, and [`false`] otherwise.
+    ///
+    /// - The bus agent asserted `PERR#` on a read, or observed an assertion of `PERR#` on a write.
+    /// - The agent setting this bit acted as the master for the operation the error occured in.
+    /// - The Parity Error Response bit of the Command Register is set.
+    ///
+    /// This bit is implemented only for bus masters.
+    pub fn master_data_parity_error(self) -> bool {
+        self.0.get_bit(8)
+    }
+
     /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
     pub fn parity_error_detected(self) -> bool {
         self.0.get_bit(15)
