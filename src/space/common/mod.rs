@@ -1,3 +1,5 @@
+use bit_field::BitField;
+
 mod class;
 pub(crate) mod header;
 mod id;
@@ -41,7 +43,8 @@ define_field!(LatencyTimer, u8, 3, 8, 0xff);
 define_field!(Bist, u8, 3, 24, 0xff);
 
 impl Status {
-    fn capability_pointer_exists(self) -> bool {
-        self.0 & 0b1_0000 != 0
+    /// Returns [`true`] if the device implements the Capability list, and [`false`] otherwise.
+    pub fn capability_pointer_exists(self) -> bool {
+        self.0.get_bit(4)
     }
 }
