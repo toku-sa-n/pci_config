@@ -48,8 +48,25 @@ impl Status {
         self.0.get_bit(4)
     }
 
+    /// Returns the frequency that the device is capable of running at.
+    pub fn capable_at(self) -> RunningMHz {
+        if self.0.get_bit(5) {
+            RunningMHz::At66MHz
+        } else {
+            RunningMHz::At33MHz
+        }
+    }
+
     /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
     pub fn parity_error_detected(self) -> bool {
         self.0.get_bit(15)
     }
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub enum RunningMHz {
+    /// The device can run at 66 MHz.
+    At66MHz,
+    /// The device can run at 33 MHz.
+    At33MHz,
 }
