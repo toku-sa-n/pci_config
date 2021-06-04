@@ -57,6 +57,11 @@ impl Status {
         }
     }
 
+    /// Returns [`true`] if the device supports the fast back-to-back, and [`false`] otherwise.
+    pub fn fast_back_to_back_supported(self) -> bool {
+        self.0.get_bit(7)
+    }
+
     /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
     pub fn parity_error_detected(self) -> bool {
         self.0.get_bit(15)
