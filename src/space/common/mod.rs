@@ -43,13 +43,13 @@ define_field!(LatencyTimer, u8, 3, 8, 0xff);
 define_field!(Bist, u8, 3, 24, 0xff);
 
 impl Status {
-    /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
-    pub fn parity_error_detected(self) -> bool {
-        self.0.get_bit(15)
-    }
-
     /// Returns [`true`] if the device implements the Capability list, and [`false`] otherwise.
     pub fn capability_pointer_exists(self) -> bool {
         self.0.get_bit(4)
+    }
+
+    /// Returns [`true`] if the device detects a parity error, and [`false`] otherwise.
+    pub fn parity_error_detected(self) -> bool {
+        self.0.get_bit(15)
     }
 }
